@@ -34,7 +34,9 @@ public class Map {
 		for(Tile[] layer : tiles) {
 			for(int y = 0; y < height; y++) {
 				for(int x = 0; x < width; x++) {
-					g.drawImage(((ImageResource) ResourceManager.getImageResource("tile_grass")).getImage(), x * 32, y * 32);
+					if(layer[x+y*width] != null){
+						g.drawImage(((ImageResource) ResourceManager.getImageResource("tile_grass")).getImage(), x * 32, y * 32);
+					}
 				}
 			}
 		}

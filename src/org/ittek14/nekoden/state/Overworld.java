@@ -1,5 +1,6 @@
 package org.ittek14.nekoden.state;
 
+import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.map.Map;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -145,8 +146,7 @@ public class Overworld implements GameState{
 
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		container.getGraphics().setAntiAlias(false);
 	}
 
 	@Override
@@ -168,6 +168,8 @@ public class Overworld implements GameState{
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+		float scale = Settings.getScale(container);
+		g.scale(scale, scale);
 		map.render(container, game, g);
 	}
 

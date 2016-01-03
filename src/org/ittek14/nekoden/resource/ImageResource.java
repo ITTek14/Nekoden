@@ -14,6 +14,7 @@ public class ImageResource extends Resource {
 	public void loadResource(String path) {
 		try {
 			img = new Image(path);
+			img.setFilter(Image.FILTER_NEAREST);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

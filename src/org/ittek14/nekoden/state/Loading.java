@@ -15,7 +15,6 @@ public class Loading implements GameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -170,6 +169,7 @@ public class Loading implements GameState {
 
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		container.getGraphics().setAntiAlias(false);
 		ResourceManager.loadResourcePack("testing.respack");
 		game.enterState(1);
 	}
