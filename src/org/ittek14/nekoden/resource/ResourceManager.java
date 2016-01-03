@@ -8,8 +8,8 @@ import org.newdawn.slick.util.xml.XMLElementList;
 import org.newdawn.slick.util.xml.XMLParser;
 
 public class ResourceManager {
-	
-	public static ArrayList<Resource> resources = new ArrayList<>();
+	public static ArrayList<ImageResource> imageResources = new ArrayList<ImageResource>();
+	public static ArrayList<ImageResource> imageResources = new ArrayList<ImageResource>();
 	
 	static {
 		resources.add(new ImageResource("resources/sprite.png"));

@@ -5,7 +5,7 @@ import org.newdawn.slick.SlickException;
 
 public class ImageResource extends Resource {
 	
-	public Image img;
+	private Image img;
 	
 	public ImageResource(String id) {
 		super(id);
@@ -18,5 +18,9 @@ public class ImageResource extends Resource {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Image getImage() {
+		return img;
 	}
 }
