@@ -3,7 +3,7 @@ package org.ittek14.nekoden;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.ittek14.nekoden.managers.ResourceManager;
+import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;

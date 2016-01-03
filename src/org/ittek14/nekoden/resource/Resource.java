@@ -1,4 +1,4 @@
-package org.ittek14.nekoden.managers;
+package org.ittek14.nekoden.resource;
 
 public abstract class Resource {
 	

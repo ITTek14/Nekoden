@@ -1,4 +1,4 @@
-package org.ittek14.nekoden.managers;
+package org.ittek14.nekoden.resource;
 
 import java.util.ArrayList;
 

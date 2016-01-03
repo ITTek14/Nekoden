@@ -1,12 +1,12 @@
-package org.ittek14.nekoden.managers;
+package org.ittek14.nekoden.resource;
 
 import org.newdawn.slick.SlickException;
 
-public class Sound extends Resource {
+public class AudioResource extends Resource {
 	
 	public org.newdawn.slick.Sound sound;
 	
-	public Sound(String id) {
+	public AudioResource(String id) {
 		super(id);
 	}
 
