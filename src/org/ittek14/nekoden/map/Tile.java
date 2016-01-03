@@ -1,11 +1,15 @@
 package org.ittek14.nekoden.map;
 
 public class Tile {
-	private String resourceID;
+	private String sprite;
 	
 	public Tile() {}
 	
-	public Tile(String _resourceID) {
-		resourceID = _resourceID;
+	public String getSprite() {
+		return sprite;
+	}
+	
+	public Tile(String _sprite) {
+		sprite = _sprite;
 	}
 }

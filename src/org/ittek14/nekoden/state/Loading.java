@@ -169,7 +169,7 @@ public class Loading implements GameState {
 
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-		
+		game.enterState(1);
 	}
 
 	@Override

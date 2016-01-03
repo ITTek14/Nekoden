@@ -4,6 +4,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.ittek14.nekoden.resource.ResourceManager;
+import org.ittek14.nekoden.state.Loading;
+import org.ittek14.nekoden.state.Overworld;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -31,6 +33,7 @@ public class Game extends StateBasedGame {
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		// TODO Auto-generated method stub
-		
+		addState(new Loading());
+		addState(new Overworld());
 	}
 }

@@ -1,5 +1,6 @@
 package org.ittek14.nekoden.state;
 
+import org.ittek14.nekoden.map.Map;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -8,7 +9,8 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Overworld implements GameState{
-
+	private Map map;
+	
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
 		// TODO Auto-generated method stub
@@ -150,13 +152,12 @@ public class Overworld implements GameState{
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		map = new Map(10,10);
 	}
 
 	@Override
@@ -167,14 +168,12 @@ public class Overworld implements GameState{
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		map.render(container, game, g);
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		map.update(container, game, delta);
 	}
 	
 }
