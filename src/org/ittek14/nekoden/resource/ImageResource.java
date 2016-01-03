@@ -10,7 +10,6 @@ public class ImageResource extends Resource {
 		super(id);
 	}
 
-	@Override
 	public void loadResource(String path) {
 		try {
 			img = new Image(path);

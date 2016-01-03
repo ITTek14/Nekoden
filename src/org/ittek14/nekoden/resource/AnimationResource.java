@@ -5,10 +5,4 @@ public class AnimationResource extends Resource {
 	public AnimationResource(String id) {
 		super(id);
 	}
-
-	@Override
-	public void loadResource(String path) {
-		
-	}
-	
 }

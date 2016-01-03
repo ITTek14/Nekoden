@@ -11,7 +11,6 @@ public class AudioResource extends Resource {
 		super(id);
 	}
 
-	@Override
 	public void loadResource(String path) {
 		try {
 			sound = new Sound(path);

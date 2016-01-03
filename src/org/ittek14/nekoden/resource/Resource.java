@@ -11,6 +11,4 @@ public abstract class Resource {
 	public String getID(){ 
 		return id;
 	}
-	
-	public abstract void loadResource(String ref);
 }
