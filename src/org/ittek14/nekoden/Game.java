@@ -3,7 +3,6 @@ package org.ittek14.nekoden;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.ittek14.nekoden.resource.ResourceManager;
 import org.ittek14.nekoden.state.Loading;
 import org.ittek14.nekoden.state.Overworld;
 import org.newdawn.slick.AppGameContainer;
@@ -12,12 +11,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Game extends StateBasedGame {
-	
-	public ResourceManager resourceManager;
 
 	public Game(String gamename) {
 		super(gamename);
-	    // TODO insert video game here
 	}
 	public static void main(String[] args) {
 		try {

@@ -1,5 +1,6 @@
 package org.ittek14.nekoden.state;
 
+import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -169,6 +170,7 @@ public class Loading implements GameState {
 
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		ResourceManager.loadResourcePack("testing.respack");
 		game.enterState(1);
 	}
 

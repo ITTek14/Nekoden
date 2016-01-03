@@ -4,7 +4,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class ImageResource extends Resource {
-	
 	private Image img;
 	
 	public ImageResource(String id) {

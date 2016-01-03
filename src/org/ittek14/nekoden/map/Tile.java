@@ -24,6 +24,6 @@ public class Tile {
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-		g.drawImage(((ImageResource) ResourceManager.getResource("grass")).getImage(), 0f, 0f);
+		g.drawImage(((ImageResource) ResourceManager.getImageResource("tile_grass")).getImage(), 0f, 0f);
 	}
 }

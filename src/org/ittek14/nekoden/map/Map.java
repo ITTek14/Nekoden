@@ -16,6 +16,12 @@ public class Map {
 		this.width = w; 
 		this.height = h;
 		tiles = new Tile[3][w*h];
+		
+		for(int layer = 0; layer < 3; layer++) {
+			for(int tile = 0; tile < w*h; tile++) {
+				 tiles[layer][tile] = new Tile("grass");
+			}
+		}
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
@@ -23,6 +29,10 @@ public class Map {
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-		g.drawOval(100, 100, width*8, height*4, 10);
+		for(Tile[] layer : tiles) {
+			for(Tile tile : layer) {
+				tile.render(container, game, g);
+			}
+		}
 	}
 }
