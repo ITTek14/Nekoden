@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <ResourcePack>
-	<IMG id="tile_grass" path="resources/tiles/grass.png" />
+	<SpriteSheet path="resources/tiles/SpriteSheet.png">
+		<Sprite id="tile_grass" x="0" y="0" w="32" h="32"/>
+		<Sprite id="tile_water1" x="0" y="32" w="32" h="32"/>
+		<Sprite id="tile_water2" x="32" y="32" w="32" h="32"/>
+		<Sprite id="tile_water3" x="64" y="32" w="32" h="32"/>
+	</SpriteSheet>
+	<Animation id="tile_water" speed="2">
+		<Sprite id="tile_water1" />
+		<Sprite id="tile_water2" />
+		<Sprite id="tile_water3" />
+	</Animation>
 </ResourcePack>

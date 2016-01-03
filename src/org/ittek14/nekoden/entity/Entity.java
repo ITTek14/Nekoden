@@ -1,5 +1,7 @@
 package org.ittek14.nekoden.entity;
 
+import org.ittek14.nekoden.resource.ImageResource;
+import org.ittek14.nekoden.resource.ResourceManager;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -34,6 +36,6 @@ public class Entity {
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-		//TODO: g.drawImage(, x, y, x2, y2, srcx, srcy, srcx2, srcy2, col);
+		g.drawImage(((ImageResource) ResourceManager.getImageResource(sprite)).getImage(), position.x, position.y);
 	}
 }
