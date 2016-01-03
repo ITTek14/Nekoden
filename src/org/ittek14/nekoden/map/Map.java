@@ -28,7 +28,6 @@ public class Map {
 			}
 		}
 		camera = new Vector2f(0,0);
-		test = ResourceManager.getAnimationResource("tile_water").getAnimation();
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
@@ -47,7 +46,6 @@ public class Map {
 				}
 			}
 		}
-		test.draw(10, 10);
 		for(Entity e : entities) {
 			e.render(container, game, g);
 		}

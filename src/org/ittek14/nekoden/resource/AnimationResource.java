@@ -6,10 +6,12 @@ import org.newdawn.slick.Image;
 public class AnimationResource extends Resource {
 	private Image[] frames;
 	private int speed;
+	private boolean pingPong;
 	
-	public AnimationResource(String id, int speed) {
+	public AnimationResource(String id, int speed, boolean pingPong) {
 		super(id);
 		this.speed = speed;
+		this.pingPong = pingPong;
 	}
 	
 	public void loadFrames(String[] sprites){
@@ -20,6 +22,8 @@ public class AnimationResource extends Resource {
 	}
 	
 	public Animation getAnimation() {
-		return new Animation(frames, speed);
+		Animation animation = new Animation(frames, speed);
+		animation.setPingPong(pingPong);
+		return animation;
 	}
 }

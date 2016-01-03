@@ -39,7 +39,7 @@ public class ResourceManager {
 				
 				for(int j = 0; j < spriteElements.size(); j++) {
 					XMLElement sprite = spriteElements.get(j);
-					ImageResource imgRes = new ImageResource(spriteElements.get(i).getAttribute("id"));
+					ImageResource imgRes = new ImageResource(spriteElements.get(j).getAttribute("id"));
 					imgRes.setImage(spriteSheet.getSubImage(
 							sprite.getIntAttribute("x"), sprite.getIntAttribute("y")
 							, sprite.getIntAttribute("w"), sprite.getIntAttribute("h")));
@@ -51,11 +51,13 @@ public class ResourceManager {
 			XMLElementList animElements = origin.getChildrenByName("Animation");
 			for(int i = 0; i < animElements.size(); i++) {
 				XMLElement animElement = animElements.get(i);
-				AnimationResource animRes = new AnimationResource(animElement.getAttribute("id"), animElement.getIntAttribute("speed"));
+				AnimationResource animRes = new AnimationResource(animElement.getAttribute("id"), 
+						animElement.getIntAttribute("speed"),
+						animElement.getBooleanAttribute("pingPong"));
 				XMLElementList frameElements = animElements.get(i).getChildrenByName("Frame");
 				String[] frames = new String[frameElements.size()];
 				for(int j = 0; j < frameElements.size(); j++) {
-					frames[j] = frameElements.get(i).getAttribute("id");
+					frames[j] = frameElements.get(j).getAttribute("id");
 				}
 				animRes.loadFrames(frames);
 				animationResources.add(animRes);
@@ -84,7 +86,7 @@ public class ResourceManager {
 	
 	public static AudioResource getAudioResource(String id) {
 		for(AudioResource resource : audioResources) {
-			if(resource.getID() == id) {
+			if(resource.getID().equals(id)) {
 				return resource;
 			}
 		}
@@ -92,22 +94,24 @@ public class ResourceManager {
 	}
 	
 	public static Resource getResource(String id) {
-		for(Resource resource : imageResources) {
-			if(resource.getID() == id) {
-				return resource;
-			}
+		Resource res = getImageResource(id);
+		if(res != null){
+			return res;
 		}
-		for(Resource resource : audioResources) {
-			if(resource.getID() == id) {
-				return resource;
-			}
+		res = getAudioResource(id);
+		if(res != null){
+			return res;
+		}
+		res = getAnimationResource(id);
+		if(res != null){
+			return res;
 		}
 		return null;
 	}
 
 	public static AnimationResource getAnimationResource(String id) {
 		for(AnimationResource resource : animationResources) {
-			if(resource.getID() == id) {
+			if(resource.getID().equals(id)) {
 				return resource;
 			}
 		}
