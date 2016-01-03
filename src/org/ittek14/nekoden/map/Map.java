@@ -23,6 +23,6 @@ public class Map {
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-		
+		g.drawOval(100, 100, width*4, height*4, 5);
 	}
 }
