@@ -2,25 +2,23 @@ package org.ittek14.nekoden.entity;
 
 import org.ittek14.nekoden.resource.ImageResource;
 import org.ittek14.nekoden.resource.ResourceManager;
-import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.state.StateBasedGame;
+
+import org.newdawn.slick.geom.Vector2f;import org.newdawn.slick.state.StateBasedGame;
 
 public class Entity {
 	
 	private Vector2f position;
 	private String sprite;
 	
-	public Entity() {}
-	
-	public Entity(Vector2f position, String sprite) {
-		this.position = position;
+	public Entity(Vector2f vector2f, String sprite) {
+		this.position = vector2f;
 		this.sprite = sprite;
 	}
 	
 	public void move(Vector2f offset) {
-		Vector2f.add(position, offset, position);
+		position = position.add(offset);
 	}
 	
 	public void setPosition(Vector2f position) {

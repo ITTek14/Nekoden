@@ -27,6 +27,7 @@ public class Game extends StateBasedGame {
 		}
 	}
 
+	
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		// TODO Auto-generated method stub

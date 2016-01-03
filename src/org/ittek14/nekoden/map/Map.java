@@ -45,6 +45,7 @@ public class Map {
 				}
 			}
 		}
+		
 		g.resetTransform();
 	}
 }
