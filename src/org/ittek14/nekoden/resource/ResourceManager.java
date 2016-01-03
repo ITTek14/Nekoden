@@ -36,7 +36,7 @@ public class ResourceManager {
 				img.setFilter(Image.FILTER_NEAREST);
 				SpriteSheet spriteSheet = new SpriteSheet(img, 1, 1);
 				XMLElementList spriteElements = spriteSheetElements.get(i).getChildrenByName("Sprite");
-
+				
 				for(int j = 0; j < spriteElements.size(); j++) {
 					XMLElement sprite = spriteElements.get(j);
 					ImageResource imgRes = new ImageResource(spriteElements.get(i).getAttribute("id"));

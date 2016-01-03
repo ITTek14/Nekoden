@@ -40,7 +40,7 @@ public class Map {
 		for(Tile[] layer : tiles) {
 			for(int y = (int) Math.max((camera.y / 32 - 5), 0); y < (int) Math.min((camera.y / 32 + 5), height); y++) {
 				for(int x = (int) Math.max((camera.x / 32 - 8), 0); x < (int) Math.min((camera.x / 32 + 8), width); x++) {
-					if(layer[x+y*width] != null){
+					if(layer[x+y*width] != null) {
 						g.drawImage(((ImageResource) ResourceManager.getImageResource(
 								layer[x+y*width].getSprite())).getImage(), x * 32, y * 32);
 					}
