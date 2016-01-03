@@ -2,7 +2,9 @@ package org.ittek14.nekoden.resource;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.util.xml.XMLElement;
 import org.newdawn.slick.util.xml.XMLElementList;
 import org.newdawn.slick.util.xml.XMLParser;
@@ -22,8 +24,17 @@ public class ResourceManager {
 				imgRes.loadResource(imgElements.get(i).getAttribute("path"));
 				imageResources.add(imgRes);
 			}
+			
+			XMLElementList spriteSheetsElements = origin.getChildrenByName("SpriteSheet");
+			for(int i = 0; i < spriteSheetsElements.size(); i++) {
+				Image spritesheet = new Image(spriteSheetsElements.get(i).getAttribute("path"));
+				XMLElementList sprites = origin.getChildrenByName("SpriteSheet");
+				ImageResource imgRes = new ImageResource(imgElements.get(i).getAttribute("id"));
+				imgRes.loadResource(imgElements.get(i).getAttribute("path"));
+				imageResources.add(imgRes);
+			}
 
-			XMLElementList audElements = origin.getChildrenByName("AUDIO");
+			XMLElementList audElements = origin.getChildrenByName("Audio");
 			for(int i = 0; i < audElements.size(); i++) {
 				AudioResource audRes = new AudioResource(audElements.get(i).getAttribute("id"));
 				audRes.loadResource(audElements.get(i).getAttribute("path"));
