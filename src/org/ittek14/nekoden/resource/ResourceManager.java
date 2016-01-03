@@ -17,7 +17,6 @@ public class ResourceManager {
 		try {
 			origin = parser.parse(path);
 			XMLElementList imgElements = origin.getChildrenByName("IMG");
-			System.out.println(imgElements.size());
 			for(int i = 0; i < imgElements.size(); i++) {
 				ImageResource imgRes = new ImageResource(imgElements.get(i).getAttribute("id"));
 				imgRes.loadResource(imgElements.get(i).getAttribute("path"));
@@ -37,7 +36,9 @@ public class ResourceManager {
 	
 	public static ImageResource getImageResource(String id) {
 		for(ImageResource resource : imageResources) {
-			if(resource.getID() == id) {
+			System.out.println(resource.getID() + ":" + id);
+			if(resource.getID().equals(id)) {
+				System.out.println("Oh");
 				return resource;
 			}
 		}
