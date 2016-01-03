@@ -11,11 +11,11 @@ public class ResourceManager {
 	
 	public static ArrayList<Resource> resources = new ArrayList<>();
 	
-	public ResourceManager() {
+	static {
 		resources.add(new ImageResource("resources/sprite.png"));
 	}
 	
-	public void loadResourcePack(String path) {
+	public static void loadResourcePack(String path) {
 		XMLParser parser = new XMLParser();
 		XMLElement origin;
 		try {
@@ -29,7 +29,7 @@ public class ResourceManager {
 		}
 	}
 	
-	public Resource getResource(String id) {
+	public static Resource getResource(String id) {
 		for(Resource resource : resources) {
 			if(resource.getID() == id) {
 				return resource;
