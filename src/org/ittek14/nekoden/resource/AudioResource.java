@@ -1,10 +1,11 @@
 package org.ittek14.nekoden.resource;
 
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 
 public class AudioResource extends Resource {
 	
-	public org.newdawn.slick.Sound sound;
+	public Sound sound;
 	
 	public AudioResource(String id) {
 		super(id);
@@ -13,7 +14,7 @@ public class AudioResource extends Resource {
 	@Override
 	public void loadResource(String path) {
 		try {
-			sound = new org.newdawn.slick.Sound(path);
+			sound = new Sound(path);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

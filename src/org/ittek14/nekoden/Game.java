@@ -5,12 +5,11 @@ import java.util.logging.Logger;
 
 import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-public class Game extends BasicGame {
+public class Game extends StateBasedGame {
 	
 	public ResourceManager resourceManager;
 
@@ -18,20 +17,6 @@ public class Game extends BasicGame {
 		super(gamename);
 	    // TODO insert video game here
 	}
-
-	@Override
-	public void init(GameContainer gc) throws SlickException {
-		resourceManager = new ResourceManager();
-	}
-	
-	@Override
-	public void update(GameContainer gc, int i) throws SlickException {}
-
-	@Override
-	public void render(GameContainer gc, Graphics g) throws SlickException {
-		g.drawString("Nekoden Monogatari", 50, 50);
-	}
-
 	public static void main(String[] args) {
 		try {
 			AppGameContainer appgc;
@@ -41,5 +26,11 @@ public class Game extends BasicGame {
 		} catch (SlickException ex) {
 			Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
+
+	@Override
+	public void initStatesList(GameContainer container) throws SlickException {
+		// TODO Auto-generated method stub
+		
 	}
 }

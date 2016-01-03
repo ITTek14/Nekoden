@@ -9,4 +9,13 @@ public class ResourceManager {
 	public ResourceManager() {
 		resources.add(new ImageResource("resources/sprite.png"));
 	}
+	
+	public Resource getResource(String id) {
+		for(Resource resource : resources) {
+			if(resource.getID() == id) {
+				return resource;
+			}
+		}
+		return null;
+	}
 }
