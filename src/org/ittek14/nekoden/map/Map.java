@@ -48,6 +48,10 @@ public class Map {
 			}
 		}
 		test.draw(10, 10);
+		for(Entity e : entities) {
+			e.render(container, game, g);
+		}
+		
 		g.resetTransform();
 	}
 }
