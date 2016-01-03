@@ -2,7 +2,6 @@ package org.ittek14.nekoden.map;
 
 import org.ittek14.nekoden.graphics.Sprite;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Tile {
@@ -22,6 +21,7 @@ public class Tile {
 		
 	}
 	
-	public void render(GameContainer container, StateBasedGame game, Graphics g) {
+	public void draw(float x, float y) {
+		sprite.draw(x, y);
 	}
 }

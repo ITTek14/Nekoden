@@ -1,34 +1,25 @@
 package org.ittek14.nekoden.graphics;
 
+import org.ittek14.nekoden.resource.AnimationResource;
+import org.ittek14.nekoden.resource.ImageResource;
+import org.ittek14.nekoden.resource.Resource;
+import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
 
 public class Sprite {
-	public static final int STATIC = 0;
-	public static final int ANIMATED = 1;
-	
-	private int mode;
-	private Image image;
 	private Animation animation;
 	
-	public Sprite(Image image){
-		this.image = image;
-		mode = STATIC;
+	public Sprite(String resource) {
+		Resource res = ResourceManager.getResource(resource);
+		if(res.getClass() == ImageResource.class){
+			animation = new Animation();
+			animation.addFrame(((ImageResource) res).getImage(), 1000);
+		}else if(res.getClass() == AnimationResource.class){
+			animation = ((AnimationResource) res).getAnimation();
+		} 
 	}
-	
-	public Sprite(Animation animation){
-		this.animation = animation;
-		mode = ANIMATED;
-	}
-	
+
 	public void draw(float x, float y) {
-		switch(mode) {
-		case STATIC:
-			image.draw(x, y);
-			break;
-		case ANIMATED:
-			animation.draw(x, y);
-			break;
-		}
+		animation.draw(x, y);
 	}
 }

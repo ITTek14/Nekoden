@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.graphics.Sprite;
-import org.ittek14.nekoden.resource.ImageResource;
-import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -41,8 +39,7 @@ public class Map {
 			for(int y = (int) Math.max((camera.y / 32 - 5), 0); y < (int) Math.min((camera.y / 32 + 5), height); y++) {
 				for(int x = (int) Math.max((camera.x / 32 - 8), 0); x < (int) Math.min((camera.x / 32 + 8), width); x++) {
 					if(layer[x+y*width] != null) {
-						g.drawImage(((ImageResource) ResourceManager.getImageResource(
-								layer[x+y*width].getSprite())).getImage(), x * 32, y * 32);
+						layer[x+y*width].draw(x*32,y*32);
 					}
 				}
 			}
