@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<ResourcePack>
+	<IMG id="tile_grass" path="resources/tiles/grass.png" />
+</ResourcePack>
