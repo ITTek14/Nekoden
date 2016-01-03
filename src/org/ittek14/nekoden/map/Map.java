@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
+import org.ittek14.nekoden.graphics.Sprite;
 import org.ittek14.nekoden.resource.ImageResource;
 import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.Animation;
@@ -24,7 +25,7 @@ public class Map {
 		tiles = new Tile[3][w*h];
 		for(int layer = 0; layer < 3; layer++) {
 			for(int tile = 0; tile < w*h; tile++) {
-				 tiles[layer][tile] = new Tile("tile_grass");
+				 tiles[layer][tile] = new Tile(new Sprite("tile_water"));
 			}
 		}
 		camera = new Vector2f(0,0);

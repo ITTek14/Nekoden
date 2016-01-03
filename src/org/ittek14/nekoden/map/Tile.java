@@ -1,20 +1,21 @@
 package org.ittek14.nekoden.map;
 
+import org.ittek14.nekoden.graphics.Sprite;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Tile {
-	private String sprite;
+	private Sprite sprite;
 	
 	public Tile() {}
 	
-	public String getSprite() {
+	public Sprite getSprite() {
 		return sprite;
 	}
 	
-	public Tile(String _sprite) {
-		sprite = _sprite;
+	public Tile(Sprite sprite) {
+		this.sprite = sprite;
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
