@@ -147,6 +147,7 @@ public class Overworld implements GameState{
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		container.getGraphics().setAntiAlias(false);
+		map = new Map(100,100);
 	}
 
 	@Override
@@ -157,7 +158,6 @@ public class Overworld implements GameState{
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		map = new Map(100,100);
 	}
 
 	@Override

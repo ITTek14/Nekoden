@@ -6,6 +6,7 @@ import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.resource.ImageResource;
 import org.ittek14.nekoden.resource.ResourceManager;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
@@ -16,7 +17,7 @@ public class Map {
 	private Vector2f camera;
 	private Tile[][] tiles;
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
-	
+	private Animation test;
 	public Map(int w, int h){
 		this.width = w; 
 		this.height = h;
@@ -27,6 +28,7 @@ public class Map {
 			}
 		}
 		camera = new Vector2f(0,0);
+		test = ResourceManager.getAnimationResource("tile_water").getAnimation();
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
@@ -45,6 +47,7 @@ public class Map {
 				}
 			}
 		}
+		test.draw(10, 10);
 		g.resetTransform();
 	}
 }
