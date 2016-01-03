@@ -5,7 +5,7 @@ import org.newdawn.slick.Sound;
 
 public class AudioResource extends Resource {
 	
-	public Sound sound;
+	private Sound sound;
 	
 	public AudioResource(String id) {
 		super(id);
@@ -18,5 +18,9 @@ public class AudioResource extends Resource {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Sound getSound() {
+		return sound;
 	}
 }
