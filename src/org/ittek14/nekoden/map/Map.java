@@ -45,6 +45,9 @@ public class Map {
 				}
 			}
 		}
+		for(Entity e : entities) {
+			e.render(container, game, g);
+		}
 		
 		g.resetTransform();
 	}
