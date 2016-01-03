@@ -12,5 +12,5 @@ public abstract class Resource {
 		return id;
 	}
 	
-	public abstract void loadResource(String path);
+	public abstract void loadResource(String ref);
 }
