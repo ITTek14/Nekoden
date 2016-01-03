@@ -157,7 +157,7 @@ public class Overworld implements GameState{
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		map = new Map(10,10);
+		map = new Map(13, 10);
 	}
 
 	@Override
