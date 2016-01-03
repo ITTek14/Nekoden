@@ -1,7 +1,5 @@
 package org.ittek14.nekoden.map;
 
-import org.ittek14.nekoden.resource.ImageResource;
-import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -24,6 +22,5 @@ public class Tile {
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-		g.drawImage(((ImageResource) ResourceManager.getImageResource("tile_grass")).getImage(), 0f, 0f);
 	}
 }

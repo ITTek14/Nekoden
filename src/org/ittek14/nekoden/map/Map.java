@@ -3,6 +3,8 @@ package org.ittek14.nekoden.map;
 import java.util.ArrayList;
 
 import org.ittek14.nekoden.entity.Entity;
+import org.ittek14.nekoden.resource.ImageResource;
+import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -30,8 +32,10 @@ public class Map {
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		for(Tile[] layer : tiles) {
-			for(Tile tile : layer) {
-				tile.render(container, game, g);
+			for(int y = 0; y < height; y++) {
+				for(int x = 0; x < width; x++) {
+					g.drawImage(((ImageResource) ResourceManager.getImageResource("tile_grass")).getImage(), x * 32, y * 32);
+				}
 			}
 		}
 	}

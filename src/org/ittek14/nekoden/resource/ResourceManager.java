@@ -36,9 +36,7 @@ public class ResourceManager {
 	
 	public static ImageResource getImageResource(String id) {
 		for(ImageResource resource : imageResources) {
-			System.out.println(resource.getID() + ":" + id);
 			if(resource.getID().equals(id)) {
-				System.out.println("Oh");
 				return resource;
 			}
 		}
