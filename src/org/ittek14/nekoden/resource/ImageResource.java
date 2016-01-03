@@ -20,6 +20,10 @@ public class ImageResource extends Resource {
 		}
 	}
 	
+	public void setImage(Image img) {
+		this.img = img;
+	}
+	
 	public Image getImage() {
 		return img;
 	}

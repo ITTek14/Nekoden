@@ -25,13 +25,21 @@ public class ResourceManager {
 				imageResources.add(imgRes);
 			}
 			
-			XMLElementList spriteSheetsElements = origin.getChildrenByName("SpriteSheet");
-			for(int i = 0; i < spriteSheetsElements.size(); i++) {
-				Image spritesheet = new Image(spriteSheetsElements.get(i).getAttribute("path"));
-				XMLElementList sprites = origin.getChildrenByName("SpriteSheet");
-				ImageResource imgRes = new ImageResource(imgElements.get(i).getAttribute("id"));
-				imgRes.loadResource(imgElements.get(i).getAttribute("path"));
-				imageResources.add(imgRes);
+			XMLElementList spriteSheetElements = origin.getChildrenByName("SpriteSheet");
+			for(int i = 0; i < spriteSheetElements.size(); i++) {
+				Image img = new Image(spriteSheetElements.get(i).getAttribute("path"));
+				img.setFilter(Image.FILTER_NEAREST);
+				SpriteSheet spriteSheet = new SpriteSheet(img, 1, 1);
+				XMLElementList spriteElements = spriteSheetElements.get(i).getChildrenByName("Sprite");
+
+				for(int j = 0; j < spriteElements.size(); j++) {
+					XMLElement sprite = spriteElements.get(j);
+					ImageResource imgRes = new ImageResource(spriteElements.get(i).getAttribute("id"));
+					imgRes.setImage(spriteSheet.getSubImage(
+							sprite.getIntAttribute("x"), sprite.getIntAttribute("y")
+							, sprite.getIntAttribute("w"), sprite.getIntAttribute("h")));
+					imageResources.add(imgRes);
+				}
 			}
 
 			XMLElementList audElements = origin.getChildrenByName("Audio");
