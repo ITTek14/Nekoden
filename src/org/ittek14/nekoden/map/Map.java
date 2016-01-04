@@ -1,11 +1,13 @@
 package org.ittek14.nekoden.map;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
+import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
-import org.newdawn.slick.Animation;
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
@@ -13,31 +15,47 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Map {
 	private int width, height;
-	private Vector2f camera;
+	private Camera camera;
 	private Tile[][] tiles;
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
-	private Animation test;
 	public Map(int w, int h){
 		this.width = w; 
 		this.height = h;
 		tiles = new Tile[3][w*h];
-		for(int layer = 0; layer < 3; layer++) {
-			for(int tile = 0; tile < w*h; tile++) {
-				 tiles[layer][tile] = new Tile(new Sprite("tile_water"));
+		for(int tile = 0; tile < w*h; tile++) {
+			if(new Random().nextBoolean())
+				tiles[0][tile] = new Tile(new Sprite("tile_grass"));
+			else
+				tiles[0][tile] = new Tile(new Sprite("tile_water"));
+			
+			if(new Random().nextInt(10) == 1 && tiles[0][tile].getSprite().getResourceID().equals("tile_grass")){
+				tiles[1][tile] = new Tile(new Sprite("tree_bot"));
+				if(tile-w >= 0)
+					tiles[2][tile-w] = new Tile(new Sprite("tree_top"));
 			}
 		}
-		camera = new Vector2f(0,0);
+		camera = new Camera();
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
-		
+		Vector2f newCamPos = camera.getPosition();
+		if(Keyboard.isKeyDown(Keyboard.KEY_UP))
+			newCamPos.y-=delta;
+		if(Keyboard.isKeyDown(Keyboard.KEY_DOWN))
+			newCamPos.y+=delta;
+		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT))
+			newCamPos.x-=delta;
+		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
+			newCamPos.x+=delta;
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-		g.translate(container.getWidth() / (2 * Settings.SCALE), container.getHeight() / (2 * Settings.SCALE));
+		camera.translateGraphics(container, g);
 		for(Tile[] layer : tiles) {
-			for(int y = (int) Math.max((camera.y / 32 - 5), 0); y < (int) Math.min((camera.y / 32 + 5), height); y++) {
-				for(int x = (int) Math.max((camera.x / 32 - 8), 0); x < (int) Math.min((camera.x / 32 + 8), width); x++) {
+			for(int y = (int) Math.max((camera.getPosition().getY() / 32 - 6), 0); 
+					y < (int) Math.min((camera.getPosition().getY() / 32 + 6), height); y++) {
+				for(int x = (int) Math.max((camera.getPosition().getX() / 32 - 10), 0); 
+						x < (int) Math.min((camera.getPosition().getX() / 32 + 10), width); x++) {
 					if(layer[x+y*width] != null) {
 						layer[x+y*width].draw(x*32,y*32);
 					}

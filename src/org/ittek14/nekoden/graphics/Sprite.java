@@ -8,8 +8,10 @@ import org.newdawn.slick.Animation;
 
 public class Sprite {
 	private Animation animation;
+	private String id;
 	
 	public Sprite(String resource) {
+		id = resource;
 		Resource res = ResourceManager.getResource(resource);
 		if(res.getClass() == ImageResource.class){
 			animation = new Animation();
@@ -17,6 +19,10 @@ public class Sprite {
 		}else if(res.getClass() == AnimationResource.class){
 			animation = ((AnimationResource) res).getAnimation();
 		} 
+	}
+	
+	public String getResourceID() {
+		return id;
 	}
 
 	public void draw(float x, float y) {

@@ -1,7 +1,9 @@
 package org.ittek14.nekoden.graphics;
 
+import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,6 +20,10 @@ public class Camera {
 	
 	public void unlock() {
 		target = null;
+	}
+	
+	public void translateGraphics(GameContainer container, Graphics g){
+		g.translate(container.getWidth() / (2 * Settings.SCALE) - position.getX(), container.getHeight() / (2 * Settings.SCALE) - position.getY());
 	}
 	
 	public void setPosition(Vector2f position) {
