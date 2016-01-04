@@ -35,7 +35,7 @@ public class Map {
 					tiles[2][tile-w] = new Tile(new Sprite("tree_top"));
 			}
 		}
-		player = new Player(new Vector2f(0f, 0f), "tile_grass");
+		player = new Player(new Vector2f(0f, 0f), "player2");
 		camera = new Camera();
 		camera.lockOn(player);
 		entities.add(player);
