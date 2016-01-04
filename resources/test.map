@@ -1,0 +1,73 @@
+<Map width="40" height="20">
+	<Tile alias="g" graphics="tile_grass" />
+	<Tile alias="w" graphics="tile_water" />
+	<Tile alias="c" graphics="tree_bot" />
+	<Tile alias="t" graphics="tree_top" />
+	<Layer1>
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggwgggggggggggggggggggggggggggg
+		gggggggggwwwwwwggggggggggggggggggggggggg
+		ggggggggwwwwwwgggggggggggggggggggggggggg
+		ggggggggggwwwwgggggggggggggggggggggggggg
+		gggggggggggwgggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		
+	</Layer1>
+	<Layer2>
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		-----c----------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+	</Layer2>
+	<Layer3>
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		-----t----------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+		----------------------------------------
+	</Layer3>
+</Map>
