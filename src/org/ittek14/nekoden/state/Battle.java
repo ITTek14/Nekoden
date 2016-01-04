@@ -7,6 +7,7 @@ import org.ittek14.nekoden.battle.Stats;
 import org.ittek14.nekoden.enemy.TestEnemy;
 import org.ittek14.nekoden.gui.Button;
 import org.ittek14.nekoden.gui.GUI;
+import org.ittek14.nekoden.gui.ProgressBar;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -21,6 +22,7 @@ public class Battle implements GameState {
 	private BattleAnime battleAnime;
 	private BattleEnemy enemy;
 	private Stats playerStats;
+	private ProgressBar enemyHealthP, playerHealthP, playerMagicP;
 	
 	@Override
 	public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
@@ -161,6 +163,15 @@ public class Battle implements GameState {
 		
 		//TEST ONLY
 		enemy = new TestEnemy(new Vector2f(arg0.getWidth() / 2f, arg0.getHeight() / 2f - 160f));
+		enemyHealthP = new ProgressBar(arg0, enemy.getStats().getHP(), 100f, 10f, new Vector2f(20, 20));
+		playerHealthP = new ProgressBar(arg0, playerStats.getHP(), 100f, 10f, new Vector2f(20, 20));
+		playerMagicP = new ProgressBar(arg0, playerStats.getMP(), 100f, 10f, new Vector2f(20, 20));
+		enemyHealthP.setValue(enemy.getStats().getHP());
+		playerHealthP.setValue(playerStats.getHP());
+		playerMagicP.setValue(playerStats.getMP());
+		gui.addWidget(enemyHealthP);
+		gui.addWidget(playerHealthP);
+		gui.addWidget(playerMagicP);
 	}
 
 	@Override
@@ -228,12 +239,15 @@ public class Battle implements GameState {
 		
 		g.setColor(Color.black);
 		g.drawString("Enemy: ", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
-		g.drawString("HP: " + enemy.getStats().getHP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
+		enemyHealthP.setPosition(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
 		
 		g.drawString("Player: ", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
 		g.drawString("HP: " + playerStats.getHP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
 		g.drawString("MP: " + playerStats.getMP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 60f);
 		g.drawString("ATK: " + playerStats.getATK(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 80f);
+		
+		playerHealthP.setPosition(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 150f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 45f);
+		playerMagicP.setPosition(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 150f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 65f);
 	}
 
 	@Override
@@ -242,6 +256,25 @@ public class Battle implements GameState {
 		battleAnime.update(container, game, delta);
 		gui.update(container, delta);
 		enemy.update(container, game, delta);
+		
+		playerHealthP.setValue(playerStats.getHP());
+		playerMagicP.setValue(playerStats.getMP());
+		if(playerHealthP.getValue() < playerHealthP.getMaxValue() / 2) {
+			playerHealthP.setColor(Color.red);
+		} else if(playerHealthP.getValue() < playerHealthP.getMaxValue() / 1.5f) {
+			playerHealthP.setColor(Color.orange);
+		} else {
+			playerHealthP.setColor(Color.green);
+		}
+		
+		enemyHealthP.setValue(enemy.getStats().getHP());
+		if(enemyHealthP.getValue() < enemyHealthP.getMaxValue() / 2) {
+			enemyHealthP.setColor(Color.red);
+		} else if(enemyHealthP.getValue() < enemyHealthP.getMaxValue() / 1.5f) {
+			enemyHealthP.setColor(Color.orange);
+		} else {
+			enemyHealthP.setColor(Color.green);
+		}
 	}
 
 	public void setPlayerStats(Stats stats) {
