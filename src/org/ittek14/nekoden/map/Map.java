@@ -3,6 +3,7 @@ package org.ittek14.nekoden.map;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.entity.Player;
 import org.ittek14.nekoden.graphics.Camera;

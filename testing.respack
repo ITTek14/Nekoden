@@ -5,6 +5,8 @@
 		<Sprite id="tile_water1" x="0" y="32" w="32" h="32"/>
 		<Sprite id="tile_water2" x="32" y="32" w="32" h="32"/>
 		<Sprite id="tile_water3" x="64" y="32" w="32" h="32"/>
+		<Sprite id="tree_top" x="0" y="64" w="32" h="32"/>
+		<Sprite id="tree_bot" x="32" y="64" w="32" h="32"/>
 	</SpriteSheet>
 	<Animation id="tile_water" speed="300" pingPong="true">
 		<Frame id="tile_water1" />

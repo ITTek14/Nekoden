@@ -12,6 +12,9 @@ public class Entity {
 	private Vector2f position;
 	private String sprite;
 	
+	public Entity() {
+	}
+	
 	public Entity(Vector2f vector2f, String sprite) {
 		this.position = vector2f;
 		this.sprite = sprite;
