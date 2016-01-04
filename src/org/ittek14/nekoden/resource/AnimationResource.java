@@ -20,7 +20,7 @@ public class AnimationResource extends Resource {
 		frames = new Image[sprites.length];
 		for(int i = 0; i < frames.length; i++) {
 			Image frame = ResourceManager.getImageResource(sprites[i]).getImage();
-			frames[i] = frame.getFlippedCopy(mirror, false);
+			frames[i] = frame;
 		}
 	}
 	

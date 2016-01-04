@@ -5,9 +5,20 @@ import org.newdawn.slick.SlickException;
 
 public class ImageResource extends Resource {
 	private Image img;
+	private boolean flipHorizontal, flipVertical;
 	
 	public ImageResource(String id) {
 		super(id);
+		flipHorizontal = false;
+		flipVertical = false;
+	}
+	
+	public void setFlipHorizontal(boolean value){
+		flipHorizontal = value;
+	}
+	
+	public void setFlipVertical(boolean value){
+		flipVertical = value;
 	}
 
 	public void loadResource(String path) {
@@ -24,6 +35,6 @@ public class ImageResource extends Resource {
 	}
 	
 	public Image getImage() {
-		return img;
+		return img.getFlippedCopy(flipHorizontal, flipVertical);
 	}
 }

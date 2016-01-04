@@ -10,7 +10,7 @@
 	</SpriteSheet>
 	<SpriteSheet path="resources/player.png">
 		<Sprite id="playerR" x="0" y="0" w="32" h="32"/>
-		<Sprite id="playerL" x="0" y="0" w="32" h="32" mirror="true"/>
+		<Sprite id="playerL" x="0" y="0" w="32" h="32" xflip="true"/>
 		<Sprite id="playerU" x="32" y="0" w="32" h="32"/>
 		<Sprite id="playerD" x="64" y="0" w="32" h="32"/>
 	</SpriteSheet>

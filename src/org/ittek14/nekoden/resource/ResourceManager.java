@@ -23,8 +23,11 @@ public class ResourceManager {
 			//Load images
 			XMLElementList imgElements = origin.getChildrenByName("IMG");
 			for(int i = 0; i < imgElements.size(); i++) {
-				ImageResource imgRes = new ImageResource(imgElements.get(i).getAttribute("id"));
-				imgRes.loadResource(imgElements.get(i).getAttribute("path"));
+				XMLElement imgElement = imgElements.get(i);
+				ImageResource imgRes = new ImageResource(imgElement.getAttribute("id"));
+				imgRes.loadResource(imgElement.getAttribute("path"));
+				imgRes.setFlipHorizontal(imgElement.getBooleanAttribute("xflip", false));
+				imgRes.setFlipVertical(imgElement.getBooleanAttribute("yflip", false));
 				imageResources.add(imgRes);
 			}
 			
@@ -42,6 +45,8 @@ public class ResourceManager {
 					imgRes.setImage(spriteSheet.getSubImage(
 							sprite.getIntAttribute("x"), sprite.getIntAttribute("y")
 							, sprite.getIntAttribute("w"), sprite.getIntAttribute("h")));
+					imgRes.setFlipHorizontal(sprite.getBooleanAttribute("xflip", false));
+					imgRes.setFlipVertical(sprite.getBooleanAttribute("yflip", false));
 					imageResources.add(imgRes);
 				}
 			}

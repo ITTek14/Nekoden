@@ -8,30 +8,47 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Player extends Entity {
 	protected Sprite sprite;
+	protected int x,y;
+	protected boolean moving;
 	
 	public Player(Vector2f vector2f) {
 		super(vector2f);
 		sprite = new Sprite("playerD");
+		x = 10; 
+		y = 10;
+		setPosition(new Vector2f(x*32, y*32));
+		moving = false;
 	}
 	
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
-		float dist = (float)delta/4;
-		if(Keyboard.isKeyDown(Keyboard.KEY_W))  {
-			position.add(new Vector2f(0f, -dist));
-			sprite = new Sprite("playerU");
+		Vector2f target = new Vector2f(x*32,y*32);
+		if(target.distance(position) < delta/5){
+			if(Keyboard.isKeyDown(Keyboard.KEY_W))  {
+				y--;
+				sprite = new Sprite("playerU");
+				moving = true;
+			}
+			if(Keyboard.isKeyDown(Keyboard.KEY_S))  {
+				y++;
+				sprite = new Sprite("playerD");
+				moving = true;
+			}
+			if(Keyboard.isKeyDown(Keyboard.KEY_A))  {
+				x--;
+				sprite = new Sprite("playerL");
+				moving = true;
+			}
+			if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
+				x++;
+				sprite = new Sprite("playerR");
+				moving = true;
+			}
 		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_S))  {
-			position.add(new Vector2f(0f, dist));
-			sprite = new Sprite("playerD");
-		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_A))  {
-			position.add(new Vector2f(-dist, 0f));
-			sprite = new Sprite("playerL");
-		}
-		if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
-			position.add(new Vector2f(dist, 0f));
-			sprite = new Sprite("playerR");
+		if(target.distance(position) < delta/5){
+			position = target;
+		}else{
+			position.add(target.sub(position).normalise().scale(delta/5));
 		}
 	}
 	
