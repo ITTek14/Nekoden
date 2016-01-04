@@ -20,6 +20,10 @@ public class Stats {
 		return magicPoints;
 	}
 	
+	public int getATK() {
+		return atkPoints;
+	}
+	
 	public void setHP(int healthPoints) {
 		this.healthPoints = healthPoints;
 	}
