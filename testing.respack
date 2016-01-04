@@ -6,9 +6,9 @@
 		<Sprite id="tile_water2" x="32" y="32" w="32" h="32"/>
 		<Sprite id="tile_water3" x="64" y="32" w="32" h="32"/>
 	</SpriteSheet>
-	<Animation id="tile_water" speed="2">
-		<Sprite id="tile_water1" />
-		<Sprite id="tile_water2" />
-		<Sprite id="tile_water3" />
+	<Animation id="tile_water" speed="300" pingPong="true">
+		<Frame id="tile_water1" />
+		<Frame id="tile_water2" />
+		<Frame id="tile_water3" />
 	</Animation>
 </ResourcePack>
