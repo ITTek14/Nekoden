@@ -7,7 +7,6 @@ import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.entity.Player;
 import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
-import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
@@ -35,7 +34,7 @@ public class Map {
 					tiles[2][tile-w] = new Tile(new Sprite("tree_top"));
 			}
 		}
-		player = new Player(new Vector2f(0f, 0f), "player2");
+		player = new Player(new Vector2f(0f, 0f));
 		camera = new Camera();
 		camera.lockOn(player);
 		entities.add(player);
@@ -64,7 +63,7 @@ public class Map {
 			}
 		}
 		for(Entity e : entities) {
-			e.render(container, game, g);
+			e.draw();
 		}
 		for(int y = (int) Math.max((camera.getPosition().getY() / 32 - 6), 0); 
 				y < (int) Math.min((camera.getPosition().getY() / 32 + 6), height); y++) {

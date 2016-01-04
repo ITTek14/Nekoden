@@ -31,8 +31,4 @@ public class Camera extends Entity {
 			setPosition(target.getPosition());
 		}
 	}
-	
-	@Override
-	public void render(GameContainer container, StateBasedGame game, Graphics g) {
-	}
 }
