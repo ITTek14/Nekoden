@@ -1,5 +1,7 @@
 package org.ittek14.nekoden.entity;
 
+import java.util.Random;
+
 import org.ittek14.nekoden.graphics.Sprite;
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
@@ -42,8 +44,13 @@ public class Player extends Entity {
 				moving = true;
 			}
 		}
-		if(target.distance(position) < (float)delta/8){
-			position = target;
+		if(target.distance(position) < 1){
+			if(target.distance(position) > 0){
+				position = target;
+				if(new Random().nextInt(50) < 2){
+					game.enterState(2);
+				}
+			}
 		}else{
 			position.add(target.sub(position).normalise().scale((float)delta/8));
 		}

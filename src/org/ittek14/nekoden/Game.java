@@ -3,6 +3,7 @@ package org.ittek14.nekoden;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.ittek14.nekoden.state.Battle;
 import org.ittek14.nekoden.state.Loading;
 import org.ittek14.nekoden.state.Overworld;
 import org.newdawn.slick.AppGameContainer;
@@ -33,5 +34,6 @@ public class Game extends StateBasedGame {
 		// TODO Auto-generated method stub
 		addState(new Loading());
 		addState(new Overworld());
+		addState(new Battle());
 	}
 }
