@@ -1,17 +1,21 @@
 package org.ittek14.nekoden.state;
 
+import org.ittek14.nekoden.battle.BattleAnime;
 import org.ittek14.nekoden.gui.Button;
 import org.ittek14.nekoden.gui.GUI;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Battle implements GameState {
 	private GUI gui;
+	private BattleAnime battleAnime;
+	
 	@Override
 	public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
 		// TODO Auto-generated method stub
@@ -146,8 +150,8 @@ public class Battle implements GameState {
 
 	@Override
 	public void enter(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		battleAnime = new BattleAnime();
+		battleAnime.init(arg0, arg1);
 	}
 
 	@Override
@@ -159,7 +163,7 @@ public class Battle implements GameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		gui = new GUI();
-		gui.addWidget(new Button(container, new Vector2f(400, 100), "Go back because there's no battle in the game yet"){
+		gui.addWidget(new Button(container, new Vector2f(400, 100), "Run"){
 			@Override
 			public void onClick(int button) {
 				game.enterState(1);
@@ -176,13 +180,15 @@ public class Battle implements GameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
+		battleAnime.render(container, game, g);
 		g.drawString("BATTLE!!!!", 100, 50);
 		gui.render(container, g);
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubws
+		battleAnime.update(container, game, delta);
 		gui.update(container, delta);
 	}
 

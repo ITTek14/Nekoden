@@ -48,7 +48,7 @@ public class Player extends Entity {
 		if(target.distance(position) < 1){
 			if(target.distance(position) > 0){
 				position = target;
-				if(new Random().nextInt(500) < 2){
+				if(new Random().nextInt(10) < 2){
 					game.enterState(2);
 				}
 			}
