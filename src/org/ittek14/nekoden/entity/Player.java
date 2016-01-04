@@ -10,9 +10,9 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Player extends Entity {
-	protected Sprite sprite;
-	protected int x,y;
-	protected boolean moving;
+	private Sprite sprite;
+	private int x,y;
+	private boolean moving;
 	
 	public Player(Vector2f vector2f) {
 		super(vector2f);
