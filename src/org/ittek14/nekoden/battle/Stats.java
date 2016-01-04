@@ -37,27 +37,15 @@ public class Stats {
 	}
 	
 	public void subtractHP(int amount) {
-		if(healthPoints - amount >= 0) {
-			healthPoints -= amount;
-		} else {
-			healthPoints = 0;
-		}
+		healthPoints = Math.max(0, healthPoints-amount);
 	}
 	
 	public void subtractMP(int amount) {
-		if(magicPoints - amount >= 0) {
-			magicPoints -= amount;
-		} else {
-			magicPoints = 0;
-		}
+		magicPoints = Math.max(0, magicPoints-amount);
 	}
 	
 	public void subtractATK(int amount) {
-		if(atkPoints - amount >= 0) {
-			atkPoints -= amount;
-		} else {
-			atkPoints = 0;
-		}
+		healthPoints = Math.max(0, healthPoints-amount);
 	}
 	
 	public void addHP(int amount) {

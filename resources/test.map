@@ -3,6 +3,10 @@
 	<Tile alias="w" graphics="tile_water" />
 	<Tile alias="c" graphics="tree_bot" />
 	<Tile alias="t" graphics="tree_top" />
+	<Tile alias="%" graphics="tile_water_grass_r" />
+	<Tile alias="€" graphics="tile_water_grass_l" />
+	<Tile alias="/" graphics="tile_water_grass_u" />
+	<Tile alias="¶" graphics="tile_water_grass_d" />
 	<Layer1>
 		gggggggggggggggggggggggggggggggggggggggg
 		gggggggggggwgggggggggggggggggggggggggggg
