@@ -56,6 +56,7 @@ public class Map {
 							for(int t = 0; t < alias.length; t++)
 							{
 								if(data.charAt(x+y*width) == alias[t]) {
+									System.out.println(ids[t]);
 									tiles[l][x+y*width] = new Tile(new Sprite(ids[t]));
 								}
 							}
