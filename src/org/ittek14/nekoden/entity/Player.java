@@ -25,6 +25,5 @@ public class Player extends Entity {
 		if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
 			move(new Vector2f(1f, 0f));
 		}
-		
 	}
 }

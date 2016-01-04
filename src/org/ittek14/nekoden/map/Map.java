@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
+import org.ittek14.nekoden.entity.Player;
 import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
 import org.lwjgl.input.Keyboard;
@@ -18,6 +19,7 @@ public class Map {
 	private Camera camera;
 	private Tile[][] tiles;
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
+	private Player player;
 	public Map(int w, int h){
 		this.width = w; 
 		this.height = h;
@@ -34,7 +36,11 @@ public class Map {
 					tiles[2][tile-w] = new Tile(new Sprite("tree_top"));
 			}
 		}
+		player = new Player(new Vector2f(0f, 0f), "tile_grass");
 		camera = new Camera();
+		camera.lockOn(player);
+		entities.add(player);
+		entities.add(camera);
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
@@ -47,6 +53,9 @@ public class Map {
 			newCamPos.x-=delta;
 		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
 			newCamPos.x+=delta;
+		for(Entity e : entities) {
+			e.update(container, game, delta);
+		}
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {

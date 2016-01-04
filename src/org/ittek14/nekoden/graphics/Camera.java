@@ -2,16 +2,18 @@ package org.ittek14.nekoden.graphics;
 
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
+import org.ittek14.nekoden.resource.ImageResource;
+import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Camera {
-	private Vector2f position = new Vector2f();
+public class Camera extends Entity {
 	private Entity target = null;
 	
 	public Camera() {
+		super();
 	}
 	
 	public void lockOn(Entity e) {
@@ -23,20 +25,17 @@ public class Camera {
 	}
 	
 	public void translateGraphics(GameContainer container, Graphics g){
-		g.translate(container.getWidth() / (2 * Settings.SCALE) - position.getX(), container.getHeight() / (2 * Settings.SCALE) - position.getY());
+		g.translate(container.getWidth() / (2 * Settings.SCALE) - getPosition().getX(), container.getHeight() / (2 * Settings.SCALE) - getPosition().getY());
 	}
 	
-	public void setPosition(Vector2f position) {
-		this.position = position;
-	}
-	
-	public Vector2f getPosition() {
-		return position;
-	}
-	
+	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		if(target != null) {
 			setPosition(target.getPosition());
 		}
+	}
+	
+	@Override
+	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 	}
 }
