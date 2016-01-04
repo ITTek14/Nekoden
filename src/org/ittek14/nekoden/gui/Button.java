@@ -15,6 +15,8 @@ public abstract class Button extends Widget {
   protected String text;
   protected int marginSize;
   protected int[] mouseButtons;
+  private boolean adjustSize = false;
+  private Vector2f size;
   
   public Button(GameContainer gc, Vector2f position, String text) {
     super(gc, position);
@@ -25,7 +27,22 @@ public abstract class Button extends Widget {
     bounds = new Rectangle(0, 0, font.getWidth(text) + marginSize*2, font.getHeight(text) + marginSize*2);
     bounds.setCenterX(position.x);
     bounds.setCenterY(position.y);
+    adjustSize = true;
   }
+  
+  public Button(GameContainer gc, Vector2f position, String text, Vector2f size) {
+	    super(gc, position);
+	    this.text = text;
+	    this.font = gc.getDefaultFont();
+	    marginSize = 16;
+	    mouseButtons = new int[]{0,1,2};
+	    bounds = new Rectangle(0, 0, size.x, size.y);
+	    bounds.setCenterX(position.x);
+	    bounds.setCenterY(position.y);
+	    adjustSize = false;
+	    this.size = size;
+  }
+	  
   
   public abstract void onClick(int button);
   
