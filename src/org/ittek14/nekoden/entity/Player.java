@@ -16,13 +16,13 @@ public class Player extends Entity {
 		sprite = new Sprite("playerD");
 		x = 10; 
 		y = 10;
-		setPosition(new Vector2f(x*32, y*32));
+		setPosition(new Vector2f(x*16, y*16));
 		moving = false;
 	}
 	
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
-		Vector2f target = new Vector2f(x*32,y*32);
+		Vector2f target = new Vector2f(x*16,y*16);
 		if(target.distance(position) < 1){
 			if(Keyboard.isKeyDown(Keyboard.KEY_W))  {
 				y--;
@@ -42,10 +42,10 @@ public class Player extends Entity {
 				moving = true;
 			}
 		}
-		if(target.distance(position) < (float)delta/12){
+		if(target.distance(position) < (float)delta/8){
 			position = target;
 		}else{
-			position.add(target.sub(position).normalise().scale((float)delta/12));
+			position.add(target.sub(position).normalise().scale((float)delta/8));
 		}
 	}
 	
