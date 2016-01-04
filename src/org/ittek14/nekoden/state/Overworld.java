@@ -2,6 +2,7 @@ package org.ittek14.nekoden.state;
 
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.map.Map;
+import org.ittek14.nekoden.map.TestMap;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -11,7 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Overworld implements GameState{
 	private Map map;
-	private boolean inDialog;
+	private boolean acceptInput = true;
 	
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
@@ -64,7 +65,7 @@ public class Overworld implements GameState{
 	@Override
 	public boolean isAcceptingInput() {
 		// TODO Auto-generated method stub
-		return false;
+		return acceptInput;
 	}
 
 	@Override
@@ -149,7 +150,7 @@ public class Overworld implements GameState{
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 		container.getGraphics().setAntiAlias(false);
 		if(map == null){
-			map = new Map("test.map");
+			map = new TestMap(container);
 		}
 	}
 
