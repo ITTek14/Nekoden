@@ -23,32 +23,29 @@ public class Player extends Entity {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		Vector2f target = new Vector2f(x*32,y*32);
-		if(target.distance(position) < delta/5){
+		if(target.distance(position) < 1){
 			if(Keyboard.isKeyDown(Keyboard.KEY_W))  {
 				y--;
 				sprite = new Sprite("playerU");
 				moving = true;
-			}
-			if(Keyboard.isKeyDown(Keyboard.KEY_S))  {
+			}else if(Keyboard.isKeyDown(Keyboard.KEY_S))  {
 				y++;
 				sprite = new Sprite("playerD");
 				moving = true;
-			}
-			if(Keyboard.isKeyDown(Keyboard.KEY_A))  {
+			}else if(Keyboard.isKeyDown(Keyboard.KEY_A))  {
 				x--;
 				sprite = new Sprite("playerL");
 				moving = true;
-			}
-			if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
+			}else if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
 				x++;
 				sprite = new Sprite("playerR");
 				moving = true;
 			}
 		}
-		if(target.distance(position) < delta/5){
+		if(target.distance(position) < (float)delta/12){
 			position = target;
 		}else{
-			position.add(target.sub(position).normalise().scale(delta/5));
+			position.add(target.sub(position).normalise().scale((float)delta/12));
 		}
 	}
 	
