@@ -3,31 +3,30 @@ package org.ittek14.nekoden.map;
 import java.util.ArrayList;
 
 import org.ittek14.nekoden.entity.Entity;
-import org.ittek14.nekoden.entity.Player;
-import org.ittek14.nekoden.entity.TestNPC;
 import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
+import org.ittek14.nekoden.gui.GUI;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.xml.XMLElement;
 import org.newdawn.slick.util.xml.XMLElementList;
 import org.newdawn.slick.util.xml.XMLParser;
 
-public class Map {
-	private int width, height;
-	private Camera camera;
-	private Tile[][] tiles;
-	private ArrayList<Entity> entities = new ArrayList<Entity>();
-	private Player player;
-	private ArrayList<Class> entityTypes = new ArrayList<Class>();
+public abstract class Map {
+	protected GUI gui;
+	protected int width, height;
+	protected Camera camera;
+	protected Tile[][] tiles;
+	protected ArrayList<Entity> entities = new ArrayList<Entity>();
 	
-	public Map (String path)
-	{
-		initEntityTypes();
-		
+	public Map (GameContainer gc) {
+		gui = new GUI();
+		camera = new Camera();
+	}
+	
+	public void loadTiles(String path){
 		XMLParser parser = new XMLParser();
 		try {
 			XMLElement mapElement = parser.parse(path);
@@ -56,27 +55,18 @@ public class Map {
 							for(int t = 0; t < alias.length; t++)
 							{
 								if(data.charAt(x+y*width) == alias[t]) {
-									System.out.println(ids[t]);
 									tiles[l][x+y*width] = new Tile(new Sprite(ids[t]));
 								}
 							}
 						}
 					}
 				}
-				XMLElementList entityElements = mapElement.getChildrenByName("Tile");
-				for(int e = 0; e < entityElements.size(); e++) {
-					//Entity entity = entityTypes.
-				}
 			}
 			
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		player = new Player(new Vector2f(0f, 0f));
-		camera = new Camera();
-		camera.lockOn(player);
-		entities.add(player);
-		entities.add(camera);
+
 	}
 	
 	public boolean isEmpty(int tile, int layer) {
@@ -87,15 +77,11 @@ public class Map {
 		return tiles[layer][(int) ((x/32)+1+((y/32)+1)*width)] == null;
 	}
 	
-	private void initEntityTypes() {
-		entityTypes.add(TestNPC.class);
-		entityTypes.add(Player.class);
-	}
-	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		for(Entity e : entities) {
 			e.update(container, game, this, delta);
 		}
+		gui.update(container, delta);
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
@@ -129,5 +115,7 @@ public class Map {
 			}
 		}
 		g.popTransform();
+		g.resetTransform();
+		gui.render(container, g);
 	}
 }
