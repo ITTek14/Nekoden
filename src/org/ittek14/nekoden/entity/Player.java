@@ -2,6 +2,7 @@ package org.ittek14.nekoden.entity;
 
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -26,5 +27,9 @@ public class Player extends Entity {
 		if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
 			position.add(new Vector2f(dist, 0f));
 		}
+	}
+	
+	public void render(GameContainer container, StateBasedGame game, Graphics g) {
+		
 	}
 }
