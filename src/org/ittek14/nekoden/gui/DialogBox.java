@@ -1,8 +1,10 @@
 package org.ittek14.nekoden.gui;
 
+import org.ittek14.nekoden.Settings;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Vector2f;
 
 public class DialogBox extends Widget {
 	protected String text="";
@@ -23,8 +25,8 @@ public class DialogBox extends Widget {
 	public void render(GameContainer gc, Graphics g) {
 		g.setColor(Color.red);
 		g.setFont(gc.getDefaultFont());
-		
-		g.drawString(text, g.getLineWidth(), 270 - g.getFont().getHeight(text));
+		Vector2f metaCoords = Settings.toMetaCoordinates(new Vector2f(g.getFont().getWidth(text) / Settings.getScale(), 100));
+		g.drawString(text, metaCoords.getX(), metaCoords.getY());
 	}
 	
 }

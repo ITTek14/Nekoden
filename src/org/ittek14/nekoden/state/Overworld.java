@@ -3,6 +3,7 @@ package org.ittek14.nekoden.state;
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.map.Map;
 import org.ittek14.nekoden.map.TestMap;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -173,10 +174,16 @@ public class Overworld implements GameState{
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		float scale = Settings.getScale(container);
+		float scale = Settings.getScale();
 		g.scale(scale, scale);
-		g.translate(-container.getWidth() / 2 + 250, -4);
+		g.translate(-container.getWidth() / 2 + 250, -container.getHeight() / 2 + 135);
 		map.render(container, game, g);
+		g.resetTransform();
+		g.setColor(Color.black);
+		g.fillRect(0, 0, (container.getWidth() - 500 * scale) / 2, container.getHeight());
+		g.fillRect(0, 0, container.getWidth(), (container.getHeight() - 270 * scale) / 2);
+		g.fillRect(container.getWidth(), 0, -(container.getWidth() - 500 * scale) / 2, container.getHeight());
+		g.fillRect(0, container.getHeight(), container.getWidth(), -(container.getHeight() - 270 * scale) / 2);
 	}
 
 	@Override

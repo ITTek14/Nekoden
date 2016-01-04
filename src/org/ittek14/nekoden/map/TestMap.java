@@ -1,5 +1,6 @@
 package org.ittek14.nekoden.map;
 
+import org.ittek14.nekoden.battle.Stats;
 import org.ittek14.nekoden.entity.Player;
 import org.ittek14.nekoden.gui.DialogBox;
 import org.newdawn.slick.GameContainer;

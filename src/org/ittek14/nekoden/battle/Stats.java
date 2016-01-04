@@ -6,9 +6,10 @@ public class Stats {
 	private int magicPoints;
 	private int atkPoints;
 	
-	public Stats(int healthPoints, int magicPoints, int aktPoints) {
+	public Stats(int healthPoints, int magicPoints, int atkPoints) {
 		this.healthPoints = healthPoints;
 		this.magicPoints = magicPoints;
+		this.atkPoints = atkPoints;
 	}
 	
 	public int getHP() {

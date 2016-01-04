@@ -16,14 +16,14 @@ public class Player extends Entity {
 	private boolean moving;
 	private Stats stats;
 	
-	public Player(Vector2f vector2f, Stats stats) {
+	public Player(Vector2f vector2f) {
 		super(vector2f);
 		sprite = new Sprite("playerD");
 		x = 10; 
 		y = 10;
 		setPosition(new Vector2f(x*16, y*16));
 		moving = false;
-		this.stats = stats;
+		this.stats = new Stats(50, 50, 20);
 	}
 	
 	@Override

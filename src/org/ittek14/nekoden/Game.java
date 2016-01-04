@@ -21,7 +21,8 @@ public class Game extends StateBasedGame {
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new Game("Nekoden Monogatari"));
 			appgc.setDisplayMode(800, 600, false);
-			
+			Settings.width = appgc.getWidth();
+			Settings.height = appgc.getHeight();
 			appgc.start();
 		} catch (SlickException ex) {
 			Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
