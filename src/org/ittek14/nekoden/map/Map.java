@@ -115,7 +115,6 @@ public abstract class Map {
 			}
 		}
 		g.popTransform();
-		g.resetTransform();
 		gui.render(container, g);
 	}
 }

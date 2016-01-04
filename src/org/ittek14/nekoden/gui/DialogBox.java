@@ -23,7 +23,8 @@ public class DialogBox extends Widget {
 	public void render(GameContainer gc, Graphics g) {
 		g.setColor(Color.red);
 		g.setFont(gc.getDefaultFont());
-		g.drawString(text, 5, 270 - g.getFont().getHeight(text)/6 - 5);
+		
+		g.drawString(text, g.getLineWidth(), 270 - g.getFont().getHeight(text));
 	}
 	
 }

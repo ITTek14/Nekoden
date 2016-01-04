@@ -175,7 +175,7 @@ public class Overworld implements GameState{
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		float scale = Settings.getScale(container);
 		g.scale(scale, scale);
-		g.translate(-container.getWidth() / 2 + 250, -container.getHeight()/2 + 135);
+		g.translate(-container.getWidth() / 2 + 250, -4);
 		map.render(container, game, g);
 	}
 
