@@ -160,7 +160,7 @@ public class Battle implements GameState {
 		battleAnime.init(arg0, arg1);
 		
 		//TEST ONLY
-		enemy = new TestEnemy(new Vector2f(arg0.getWidth() / 2f, arg0.getHeight() / 2f - 100f));
+		enemy = new TestEnemy(new Vector2f(arg0.getWidth() / 2f, arg0.getHeight() / 2f - 160f));
 	}
 
 	@Override
@@ -173,25 +173,25 @@ public class Battle implements GameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		gui = new GUI();
 		battleAnime = new BattleAnime();
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f), "Atk", new Vector2f(50, 40)){
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 30f), "Atk", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
 				enemy.getStats().subtractHP(playerStats.getATK());
 			}
 		});
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f + 50f), "Deff", new Vector2f(50, 40)){
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Deff", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
 				game.enterState(1);
 			}
 		});
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f + 100f), "Bag", new Vector2f(50, 40)){
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Bag", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
 				game.enterState(1);
 			}
 		});
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 35f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f + 160f), "Run", new Vector2f(70, 40)){
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 35f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Run", new Vector2f(70, 30)){
 			@Override
 			public void onClick(int button) {
 				game.enterState(1);
@@ -209,13 +209,11 @@ public class Battle implements GameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		float scale = Settings.getScale();
 		g.scale(scale, scale);
-		//g.translate(-container.getWidth() / 2 + 250, -container.getHeight() / 2 + 135);
+		g.translate(0f, 270 / 4 - 14f);
 	
-		battleAnime.render(container, game, g);
-		g.drawString("Enemy HP: " + enemy.getStats().getHP(), 100, 50);
-		gui.render(container, g);
-		enemy.render(container, game, g);
+		battleAnime.renderBackground(container, game, g);
 		
+		enemy.render(container, game, g);
 		
 		g.resetTransform();
 		g.setColor(Color.black);
@@ -223,6 +221,19 @@ public class Battle implements GameState {
 		g.fillRect(0, 0, container.getWidth(), (container.getHeight() - 270 * scale) / 2);
 		g.fillRect(container.getWidth(), 0, -(container.getWidth() - 500 * scale) / 2, container.getHeight());
 		g.fillRect(0, container.getHeight(), container.getWidth(), -(container.getHeight() - 270 * scale) / 2);
+		
+		battleAnime.render(container, game, g);
+		
+		gui.render(container, g);
+		
+		g.setColor(Color.black);
+		g.drawString("Enemy: ", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
+		g.drawString("HP: " + enemy.getStats().getHP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
+		
+		g.drawString("Player: ", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
+		g.drawString("HP: " + playerStats.getHP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
+		g.drawString("MP: " + playerStats.getMP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 60f);
+		g.drawString("ATK: " + playerStats.getATK(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 80f);
 	}
 
 	@Override
