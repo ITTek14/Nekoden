@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.entity.Player;
+import org.ittek14.nekoden.entity.TestNPC;
 import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
 import org.newdawn.slick.GameContainer;
@@ -21,9 +22,12 @@ public class Map {
 	private Tile[][] tiles;
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	private Player player;
+	private ArrayList<Class> entityTypes = new ArrayList<Class>();
 	
 	public Map (String path)
 	{
+		initEntityTypes();
+		
 		XMLParser parser = new XMLParser();
 		try {
 			XMLElement mapElement = parser.parse(path);
@@ -75,8 +79,12 @@ public class Map {
 	}
 	
 	public boolean isEmpty(float x, float y, int layer) {
-		System.out.println((int)x/32);
 		return tiles[layer][(int) ((x/32)+1+((y/32)+1)*width)] == null;
+	}
+	
+	private void initEntityTypes() {
+		entityTypes.add(TestNPC.class);
+		entityTypes.add(Player.class);
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
@@ -86,6 +94,7 @@ public class Map {
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
+		g.pushTransform();
 		camera.translateGraphics(container, g);
 		
 		for(int y = (int) Math.max((camera.getPosition().getY() / 32 - 6), 0); 
@@ -100,9 +109,11 @@ public class Map {
 				}
 			}
 		}
+		
 		for(Entity e : entities) {
 			e.draw();
 		}
+		
 		for(int y = (int) Math.max((camera.getPosition().getY() / 32 - 6), 0); 
 				y < (int) Math.min((camera.getPosition().getY() / 32 + 6), height); y++) {
 			for(int x = (int) Math.max((camera.getPosition().getX() / 32 - 10), 0); 
@@ -112,6 +123,6 @@ public class Map {
 				}
 			}
 		}
-		g.resetTransform();
+		g.popTransform();
 	}
 }

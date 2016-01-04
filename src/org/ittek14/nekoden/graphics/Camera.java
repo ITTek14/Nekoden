@@ -23,7 +23,7 @@ public class Camera extends Entity {
 	}
 	
 	public void translateGraphics(GameContainer container, Graphics g){
-		g.translate(container.getWidth() / (2 * Settings.SCALE) - getPosition().getX(), container.getHeight() / (2 * Settings.SCALE) - getPosition().getY());
+		g.translate(container.getWidth() / (2) - getPosition().getX(), container.getHeight() / (2) - getPosition().getY());
 	}
 	
 	@Override

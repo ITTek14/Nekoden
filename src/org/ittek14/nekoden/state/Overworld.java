@@ -11,6 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Overworld implements GameState{
 	private Map map;
+	private boolean inDialog;
 	
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
@@ -170,6 +171,7 @@ public class Overworld implements GameState{
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		float scale = Settings.getScale(container);
 		g.scale(scale, scale);
+		g.translate(-container.getWidth() / 2 + 250, -container.getHeight()/2 + 135);
 		map.render(container, game, g);
 	}
 
