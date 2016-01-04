@@ -1,11 +1,12 @@
 package org.ittek14.nekoden.battle;
 
-public class EntityBattleData {
+public class Stats {
 	
 	private int healthPoints;
 	private int magicPoints;
+	private int atkPoints;
 	
-	public EntityBattleData(int healthPoints, int magicPoints) {
+	public Stats(int healthPoints, int magicPoints, int aktPoints) {
 		this.healthPoints = healthPoints;
 		this.magicPoints = magicPoints;
 	}
@@ -26,6 +27,10 @@ public class EntityBattleData {
 		this.magicPoints = magicPoints;
 	}
 	
+	public void setATK(int atkPoints) {
+		this.atkPoints = atkPoints;
+	}
+	
 	public void subtractHP(int amount) {
 		if(healthPoints - amount >= 0) {
 			healthPoints -= amount;
@@ -42,12 +47,24 @@ public class EntityBattleData {
 		}
 	}
 	
+	public void subtractATK(int amount) {
+		if(atkPoints - amount >= 0) {
+			atkPoints -= amount;
+		} else {
+			atkPoints = 0;
+		}
+	}
+	
 	public void addHP(int amount) {
 		healthPoints += amount;
 	}
 	
 	public void addMP(int amount) {
 		magicPoints += amount;
+	}
+	
+	public void addATK(int amount) {
+		atkPoints += amount;
 	}
 	
 	public boolean isDead() {

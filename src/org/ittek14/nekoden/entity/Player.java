@@ -2,6 +2,7 @@ package org.ittek14.nekoden.entity;
 
 import java.util.Random;
 
+import org.ittek14.nekoden.battle.Stats;
 import org.ittek14.nekoden.graphics.Sprite;
 import org.ittek14.nekoden.map.Map;
 import org.lwjgl.input.Keyboard;
@@ -13,14 +14,16 @@ public class Player extends Entity {
 	private Sprite sprite;
 	private int x,y;
 	private boolean moving;
+	private Stats stats;
 	
-	public Player(Vector2f vector2f) {
+	public Player(Vector2f vector2f, Stats stats) {
 		super(vector2f);
 		sprite = new Sprite("playerD");
 		x = 10; 
 		y = 10;
 		setPosition(new Vector2f(x*16, y*16));
 		moving = false;
+		this.stats = stats;
 	}
 	
 	@Override

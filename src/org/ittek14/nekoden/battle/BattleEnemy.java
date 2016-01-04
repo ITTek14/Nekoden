@@ -1,23 +1,27 @@
 package org.ittek14.nekoden.battle;
 
 import org.ittek14.nekoden.entity.Entity;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.state.StateBasedGame;
 
 public abstract class BattleEnemy extends Entity {
 	
 	private String name;
-	private EntityBattleData data;
+	private Stats stats;
 	
-	public BattleEnemy(String name, EntityBattleData data) {
+	public BattleEnemy(String name, Stats stats) {
 		super();
 		this.name = name;
-		this.data = data;
+		this.stats = stats;
 	}
 	
-	public BattleEnemy(Vector2f position, String name, EntityBattleData data) {
+	public BattleEnemy(Vector2f position, String name, Stats stats) {
 		super(position);
 		this.name = name;
-		this.data = data;
+		this.stats = stats;
 	}
 	
 	public String getName() {
@@ -28,15 +32,19 @@ public abstract class BattleEnemy extends Entity {
 		this.name = name;
 	}
 	
-	public EntityBattleData getBattleData() {
-		return data;
+	public Stats getStats() {
+		return stats;
 	}
 	
-	public void setBattleData(EntityBattleData data) {
-		this.data = data;
+	public void setStats(Stats stats) {
+		this.stats = stats;
 	}
 	
 	public boolean isDead() {
-		return data.isDead();
+		return stats.isDead();
 	}
+	
+	public abstract void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException;
+	
+	public abstract void update(GameContainer container, StateBasedGame game, int delta) throws SlickException;
 }
