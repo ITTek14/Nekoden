@@ -1,11 +1,13 @@
 package org.ittek14.nekoden.state;
 
+import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.battle.BattleAnime;
 import org.ittek14.nekoden.battle.BattleEnemy;
 import org.ittek14.nekoden.battle.Stats;
 import org.ittek14.nekoden.enemy.TestEnemy;
 import org.ittek14.nekoden.gui.Button;
 import org.ittek14.nekoden.gui.GUI;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -205,11 +207,22 @@ public class Battle implements GameState {
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
+		float scale = Settings.getScale();
+		g.scale(scale, scale);
+		//g.translate(-container.getWidth() / 2 + 250, -container.getHeight() / 2 + 135);
+	
 		battleAnime.render(container, game, g);
 		g.drawString("Enemy HP: " + enemy.getStats().getHP(), 100, 50);
 		gui.render(container, g);
 		enemy.render(container, game, g);
+		
+		
+		g.resetTransform();
+		g.setColor(Color.black);
+		g.fillRect(0, 0, (container.getWidth() - 500 * scale) / 2, container.getHeight());
+		g.fillRect(0, 0, container.getWidth(), (container.getHeight() - 270 * scale) / 2);
+		g.fillRect(container.getWidth(), 0, -(container.getWidth() - 500 * scale) / 2, container.getHeight());
+		g.fillRect(0, container.getHeight(), container.getWidth(), -(container.getHeight() - 270 * scale) / 2);
 	}
 
 	@Override
