@@ -7,6 +7,7 @@ import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.entity.Player;
 import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
