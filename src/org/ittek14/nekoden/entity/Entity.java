@@ -6,7 +6,7 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Entity {
-	protected String id="Entity";
+	public static final String ID="Entity";
 	protected Vector2f position;
 	
 	public Entity() {
@@ -22,10 +22,6 @@ public class Entity {
 	
 	public Vector2f getPosition() {
 		return position;
-	}
-	
-	public String getID(){
-		return id;
 	}
 	
 	public void draw() {

@@ -1,6 +1,5 @@
 package org.ittek14.nekoden.graphics;
 
-import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.map.Map;
 import org.newdawn.slick.GameContainer;

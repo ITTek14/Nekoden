@@ -62,6 +62,10 @@ public class Map {
 						}
 					}
 				}
+				XMLElementList entityElements = mapElement.getChildrenByName("Tile");
+				for(int e = 0; e < entityElements.size(); e++) {
+					//Entity entity = entityTypes.
+				}
 			}
 			
 		} catch (SlickException e) {
