@@ -13,17 +13,18 @@ public class Player extends Entity {
 	
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
+		float dist = (float)delta/4;
 		if(Keyboard.isKeyDown(Keyboard.KEY_W))  {
-			position.add(new Vector2f(0f, -delta/2));
+			position.add(new Vector2f(0f, -dist));
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S))  {
-			position.add(new Vector2f(0f, delta/2));
+			position.add(new Vector2f(0f, dist));
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A))  {
-			position.add(new Vector2f(-delta/2, 0f));
+			position.add(new Vector2f(-dist, 0f));
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
-			position.add(new Vector2f(delta/2, 0f));
+			position.add(new Vector2f(dist, 0f));
 		}
 	}
 }
