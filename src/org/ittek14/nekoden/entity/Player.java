@@ -5,6 +5,7 @@ import java.util.Random;
 import org.ittek14.nekoden.battle.Stats;
 import org.ittek14.nekoden.graphics.Sprite;
 import org.ittek14.nekoden.map.Map;
+import org.ittek14.nekoden.state.Battle;
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.geom.Vector2f;
@@ -52,6 +53,7 @@ public class Player extends Entity {
 			if(target.distance(position) > 0){
 				position = target;
 				if(new Random().nextInt(10) < 2){
+					((Battle)game.getState(2)).setPlayerStats(stats);
 					game.enterState(2);
 				}
 			}
