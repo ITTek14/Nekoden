@@ -1,7 +1,6 @@
 package org.ittek14.nekoden.map;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import org.ittek14.nekoden.entity.Entity;
 import org.ittek14.nekoden.entity.Player;
@@ -25,7 +24,6 @@ public class Map {
 	
 	public Map (String path)
 	{
-		
 		XMLParser parser = new XMLParser();
 		try {
 			XMLElement mapElement = parser.parse(path);
@@ -72,9 +70,18 @@ public class Map {
 		entities.add(camera);
 	}
 	
+	public boolean isEmpty(int tile, int layer) {
+		return tiles[layer][tile] == null;
+	}
+	
+	public boolean isEmpty(float x, float y, int layer) {
+		System.out.println((int)x/32);
+		return tiles[layer][(int) ((x/32)+1+((y/32)+1)*width)] == null;
+	}
+	
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		for(Entity e : entities) {
-			e.update(container, game, delta);
+			e.update(container, game, this, delta);
 		}
 	}
 	

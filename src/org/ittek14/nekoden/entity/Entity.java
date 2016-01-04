@@ -1,5 +1,6 @@
 package org.ittek14.nekoden.entity;
 
+import org.ittek14.nekoden.map.Map;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
@@ -23,10 +24,11 @@ public class Entity {
 		return position;
 	}
 	
-	public void update(GameContainer container, StateBasedGame game, int delta) {
-		
-	}
-	
 	public void draw() {
+	}
+
+	public void update(GameContainer container, StateBasedGame game, Map map, int delta) {
+		// TODO Auto-generated method stub
+		
 	}
 }
