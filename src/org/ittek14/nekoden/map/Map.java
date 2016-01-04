@@ -9,8 +9,12 @@ import org.ittek14.nekoden.graphics.Camera;
 import org.ittek14.nekoden.graphics.Sprite;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.xml.XMLElement;
+import org.newdawn.slick.util.xml.XMLElementList;
+import org.newdawn.slick.util.xml.XMLParser;
 
 public class Map {
 	private int width, height;
@@ -18,21 +22,48 @@ public class Map {
 	private Tile[][] tiles;
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	private Player player;
-	public Map(int w, int h){
-		this.width = w; 
-		this.height = h;
-		tiles = new Tile[3][w*h];
-		for(int tile = 0; tile < w*h; tile++) {
-			if(new Random().nextBoolean())
-				tiles[0][tile] = new Tile(new Sprite("tile_grass"));
-			else
-				tiles[0][tile] = new Tile(new Sprite("tile_water"));
+	
+	public Map (String path)
+	{
+		
+		XMLParser parser = new XMLParser();
+		try {
+			XMLElement mapElement = parser.parse(path);
+			width = mapElement.getIntAttribute("width");
+			height = mapElement.getIntAttribute("height");
+			tiles = new Tile[3][width*height];
 			
-			if(new Random().nextInt(10) == 1 && tiles[0][tile].getSprite().getResourceID().equals("tile_grass")){
-				tiles[1][tile] = new Tile(new Sprite("tree_bot"));
-				if(tile-w >= 0)
-					tiles[2][tile-w] = new Tile(new Sprite("tree_top"));
+			XMLElementList tileElements = mapElement.getChildrenByName("Tile");
+			char[] alias = new char[tileElements.size()];
+			String[] ids = new String[tileElements.size()];
+			for(int i = 0; i < tileElements.size(); i++) {
+				alias[i] = tileElements.get(i).getAttribute("alias").charAt(0);
+				ids[i] = tileElements.get(i).getAttribute("graphics");
 			}
+			
+			for(int l = 0; l < 3; l++){
+				XMLElementList layerElements = mapElement.getChildrenByName("Layer"+(l+1));
+				for(int i = 0; i < layerElements.size(); i++) {
+					String data = layerElements.get(i).getContent();
+					data = data.replaceAll(" ", "");
+					data = data.replaceAll("	", "");
+					data = data.replaceAll("\n", "");
+					
+					for(int y = 0; y < height; y++) {
+						for(int x = 0; x < width; x++) {
+							for(int t = 0; t < alias.length; t++)
+							{
+								if(data.charAt(x+y*width) == alias[t]) {
+									tiles[l][x+y*width] = new Tile(new Sprite(ids[t]));
+								}
+							}
+						}
+					}
+				}
+			}
+			
+		} catch (SlickException e) {
+			e.printStackTrace();
 		}
 		player = new Player(new Vector2f(0f, 0f));
 		camera = new Camera();
