@@ -163,7 +163,26 @@ public class Battle implements GameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		gui = new GUI();
-		gui.addWidget(new Button(container, new Vector2f(400, 100), "Run"){
+		battleAnime = new BattleAnime();
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f), "Atk", new Vector2f(50, 40)){
+			@Override
+			public void onClick(int button) {
+				game.enterState(1);
+			}
+		});
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f + 50f), "Deff", new Vector2f(50, 40)){
+			@Override
+			public void onClick(int button) {
+				game.enterState(1);
+			}
+		});
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f + 100f), "Bag", new Vector2f(50, 40)){
+			@Override
+			public void onClick(int button) {
+				game.enterState(1);
+			}
+		});
+		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 35f, container.getHeight() - battleAnime.getRegionSize().y - 10f + 20f + 160f), "Run", new Vector2f(70, 40)){
 			@Override
 			public void onClick(int button) {
 				game.enterState(1);
