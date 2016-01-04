@@ -9,8 +9,8 @@ import org.newdawn.slick.geom.Vector2f;import org.newdawn.slick.state.StateBased
 
 public class Entity {
 	
-	private Vector2f position;
-	private String sprite;
+	protected Vector2f position;
+	protected String sprite;
 	
 	public Entity() {
 	}
@@ -18,10 +18,6 @@ public class Entity {
 	public Entity(Vector2f vector2f, String sprite) {
 		this.position = vector2f;
 		this.sprite = sprite;
-	}
-	
-	public void move(Vector2f offset) {
-		position = position.add(offset);
 	}
 	
 	public void setPosition(Vector2f position) {

@@ -14,16 +14,16 @@ public class Player extends Entity {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		if(Keyboard.isKeyDown(Keyboard.KEY_W))  {
-			move(new Vector2f(0f, -1f));
+			position.add(new Vector2f(0f, -delta/2));
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S))  {
-			move(new Vector2f(0f, 1f));
+			position.add(new Vector2f(0f, delta/2));
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A))  {
-			move(new Vector2f(-1f, 0f));
+			position.add(new Vector2f(-delta/2, 0f));
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D))  {
-			move(new Vector2f(1f, 0f));
+			position.add(new Vector2f(delta/2, 0f));
 		}
 	}
 }

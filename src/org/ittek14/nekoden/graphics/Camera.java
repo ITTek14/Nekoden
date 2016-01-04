@@ -2,11 +2,8 @@ package org.ittek14.nekoden.graphics;
 
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.entity.Entity;
-import org.ittek14.nekoden.resource.ImageResource;
-import org.ittek14.nekoden.resource.ResourceManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Camera extends Entity {
