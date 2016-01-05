@@ -23,7 +23,13 @@
 		<Sprite id="playerL" x="0" y="0" w="32" h="32" xflip="true"/>
 		<Sprite id="playerU" x="32" y="0" w="32" h="32"/>
 		<Sprite id="playerD" x="64" y="0" w="32" h="32"/>
+		<Sprite id="playerBig" x="0" y="32" w="96" h="96"/>
 	</SpriteSheet>
+	<SpriteSheet path="resources/monster.png">
+		<Sprite id="ghostBig1" x="0" y="0" w="96" h="96"/>
+		<Sprite id="ghostBig2" x="96" y="0" w="96" h="96"/>
+		<Sprite id="ghostBig3" x="192" y="0" w="96" h="96"/>
+	</SpriteSheet>d
 	<SpriteSheet path="resources/background.png">
 		<Sprite id="battleBackground" x="0" y="0" w="500" h="270"/>
 	</SpriteSheet>
@@ -39,5 +45,10 @@
 	<Animation id="tile_water_grass_l" speed="300" pingPong="true">
 		<Frame id="tile_water_grass_l1" />
 		<Frame id="tile_water_grass_l2" />
+	</Animation>
+		<Animation id="ghostBig" speed="300" pingPong="false">
+		<Frame id="ghostBig1" />
+		<Frame id="ghostBig2" />
+		<Frame id="ghostBig3" />
 	</Animation>
 </ResourcePack>

@@ -11,21 +11,23 @@ import org.newdawn.slick.state.StateBasedGame;
 public abstract class BattleEnemy extends Entity {
 	
 	private String name;
-	protected Sprite sprite;
+	protected Sprite sprite, bigSprite;
 	private Stats stats;
 	
-	public BattleEnemy(String name, Stats stats, Sprite sprite) {
+	public BattleEnemy(String name, Stats stats, Sprite sprite, Sprite bigSprite) {
 		super();
 		this.name = name;
 		this.stats = stats;
 		this.sprite = sprite;
+		this.bigSprite = bigSprite;
 	}
 	
-	public BattleEnemy(Vector2f position, String name, Stats stats, Sprite sprite) {
+	public BattleEnemy(Vector2f position, String name, Stats stats, Sprite sprite, Sprite bigSprite) {
 		super(position);
 		this.name = name;
 		this.stats = stats;
 		this.sprite = sprite;
+		this.bigSprite = bigSprite;
 	}
 	
 	public String getName() {

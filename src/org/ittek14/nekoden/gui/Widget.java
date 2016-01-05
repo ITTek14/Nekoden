@@ -89,4 +89,8 @@ public abstract class Widget implements InputListener {
 
   @Override
   public void controllerUpReleased(int controller) {}
+  
+  public void unregister(GameContainer container) {
+	  container.getInput().removeListener(this);
+  }
 }

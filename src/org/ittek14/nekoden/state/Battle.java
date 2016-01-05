@@ -5,6 +5,7 @@ import org.ittek14.nekoden.battle.BattleAnime;
 import org.ittek14.nekoden.battle.BattleEnemy;
 import org.ittek14.nekoden.battle.Stats;
 import org.ittek14.nekoden.enemy.TestEnemy;
+import org.ittek14.nekoden.graphics.Sprite;
 import org.ittek14.nekoden.gui.Button;
 import org.ittek14.nekoden.gui.GUI;
 import org.ittek14.nekoden.gui.ProgressBar;
@@ -23,6 +24,7 @@ public class Battle implements GameState {
 	private BattleEnemy enemy;
 	private Stats playerStats;
 	private ProgressBar enemyHealthP, playerHealthP, playerMagicP;
+	private Sprite playerSprite;
 	
 	@Override
 	public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
@@ -158,20 +160,52 @@ public class Battle implements GameState {
 
 	@Override
 	public void enter(GameContainer arg0, StateBasedGame arg1) throws SlickException {
+		gui = new GUI();
 		battleAnime = new BattleAnime();
+		playerSprite = new Sprite("playerBig");
 		battleAnime.init(arg0, arg1);
 		
 		//TEST ONLY
-		enemy = new TestEnemy(new Vector2f(arg0.getWidth() / 2f, arg0.getHeight() / 2f - 160f));
+		enemy = new TestEnemy(new Vector2f(arg0.getWidth() / 2f, arg0.getHeight() / 2f - 160f - 48f));
 		enemyHealthP = new ProgressBar(arg0, enemy.getStats().getHP(), 100f, 10f, new Vector2f(20, 20));
 		playerHealthP = new ProgressBar(arg0, playerStats.getHP(), 100f, 10f, new Vector2f(20, 20));
 		playerMagicP = new ProgressBar(arg0, playerStats.getMP(), 100f, 10f, new Vector2f(20, 20));
 		enemyHealthP.setValue(enemy.getStats().getHP());
+		
 		playerHealthP.setValue(playerStats.getHP());
 		playerMagicP.setValue(playerStats.getMP());
 		gui.addWidget(enemyHealthP);
 		gui.addWidget(playerHealthP);
 		gui.addWidget(playerMagicP);
+		
+
+		
+		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 30f), "Atk", new Vector2f(50, 30)){
+			@Override
+			public void onClick(int button) {
+				enemy.getStats().subtractHP(playerStats.getATK());
+				System.out.println(this);
+			}
+		});
+		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Deff", new Vector2f(50, 30)){
+			@Override
+			public void onClick(int button) {
+				arg1.enterState(1);
+			}
+		});
+		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Bag", new Vector2f(50, 30)){
+			@Override
+			public void onClick(int button) {
+				arg1.enterState(1);
+			}
+		});
+		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 35f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Run", new Vector2f(70, 30)){
+			@Override
+			public void onClick(int button) {
+				arg1.enterState(1);
+			}
+		});
+		
 	}
 
 	@Override
@@ -182,38 +216,12 @@ public class Battle implements GameState {
 	
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		gui = new GUI();
-		battleAnime = new BattleAnime();
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 30f), "Atk", new Vector2f(50, 30)){
-			@Override
-			public void onClick(int button) {
-				enemy.getStats().subtractHP(playerStats.getATK());
-			}
-		});
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Deff", new Vector2f(50, 30)){
-			@Override
-			public void onClick(int button) {
-				game.enterState(1);
-			}
-		});
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Bag", new Vector2f(50, 30)){
-			@Override
-			public void onClick(int button) {
-				game.enterState(1);
-			}
-		});
-		gui.addWidget(new Button(container, new Vector2f(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 35f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Run", new Vector2f(70, 30)){
-			@Override
-			public void onClick(int button) {
-				game.enterState(1);
-			}
-		});
 	}
 
 	@Override
 	public void leave(GameContainer container, StateBasedGame game) throws SlickException {
 		// TODO Auto-generated method stub
-		
+		gui.clearWidgets(container);
 	}
 
 	@Override
@@ -225,6 +233,7 @@ public class Battle implements GameState {
 		battleAnime.renderBackground(container, game, g);
 		
 		enemy.render(container, game, g);
+		playerSprite.draw(container.getWidth() / 2f - 350f, container.getHeight() / 2f - 160 - 48f);
 		
 		g.resetTransform();
 		g.setColor(Color.black);

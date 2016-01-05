@@ -27,4 +27,11 @@ public class GUI {
   public void addWidget(Widget widget) {
     widgets.add(widget);
   }
+  
+  public void clearWidgets(GameContainer container) {
+	  for(int i = 0; i < widgets.size(); i++) {
+		  widgets.get(i).unregister(container);
+		  widgets.remove(i);
+	  }
+  }
 }
