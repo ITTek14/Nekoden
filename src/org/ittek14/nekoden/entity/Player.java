@@ -16,15 +16,16 @@ public class Player extends Entity {
 	private int x,y;
 	private boolean moving;
 	private Stats stats;
+	private long lastEncounter = 50;
 	
 	public Player(Vector2f vector2f) {
 		super(vector2f);
 		sprite = new Sprite("playerD");
-		x = 10; 
-		y = 10;
+		y = 26;
+		x = 40;
 		setPosition(new Vector2f(x*16, y*16));
 		moving = false;
-		this.stats = new Stats(50, 50, 20);
+		this.stats = new Stats(70, 50, 20);
 	}
 	
 	@Override
@@ -51,8 +52,10 @@ public class Player extends Entity {
 		}
 		if(target.distance(position) < 1){
 			if(target.distance(position) > 0){
+			  lastEncounter = Math.max(0, lastEncounter-1);
 				position = target;
-				if(new Random().nextInt(10) < 2){
+				if(new Random().nextInt(10) < 2 && lastEncounter <= 0){
+				  lastEncounter = 5;
 					((Battle)game.getState(2)).setPlayerStats(stats);
 					game.enterState(2);
 				}

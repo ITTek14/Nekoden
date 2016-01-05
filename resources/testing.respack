@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <ResourcePack>
-	<SpriteSheet path="resources/tiles/SpriteSheet.png">
+	<IMG id="dead" path="rip.png" />
+	<SpriteSheet path="tiles/SpriteSheet.png">
 		<Sprite id="tile_grass" x="0" y="0" w="32" h="32"/>
 		<Sprite id="tile_water1" x="0" y="32" w="32" h="32"/>
 		<Sprite id="tile_water2" x="32" y="32" w="32" h="32"/>
 		<Sprite id="tile_water3" x="64" y="32" w="32" h="32"/>
 		<Sprite id="tree_top" x="0" y="64" w="32" h="32"/>
 		<Sprite id="tree_bot" x="32" y="64" w="32" h="32"/>
-		<Sprite id="tile_water_grass_r1" x="64" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_r2" x="96" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_l1" x="64" y="0" w="32" h="32" xflip="true"/>
-		<Sprite id="tile_water_grass_l2" x="96" y="0" w="32" h="32" xflip="true"/>
-		<Sprite id="tile_water_grass_t1" x="64" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_t2" x="96" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_t3" x="64" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_t1" x="64" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_t2" x="96" y="0" w="32" h="32"/>
-		<Sprite id="tile_water_grass_t3" x="64" y="0" w="32" h="32"/>
+		<Sprite id="tile_water_grass_r1" x="32" y="0" w="32" h="32"/>
+		<Sprite id="tile_water_grass_r2" x="64" y="0" w="32" h="32"/>
+		<Sprite id="tile_water_grass_l1" x="96" y="0" w="32" h="32"/>
+		<Sprite id="tile_water_grass_l2" x="128" y="0" w="32" h="32"/>
+		<Sprite id="tile_water_grass_u1" x="192" y="32" w="32" h="32"/>
+		<Sprite id="tile_water_grass_u2" x="224" y="32" w="32" h="32"/>
+		<Sprite id="tile_water_grass_u3" x="256" y="32" w="32" h="32"/>
+		<Sprite id="tile_water_grass_d1" x="96" y="32" w="32" h="32"/>
+		<Sprite id="tile_water_grass_d2" x="128" y="32" w="32" h="32"/>
+		<Sprite id="tile_water_grass_d3" x="160" y="32" w="32" h="32"/>
 	</SpriteSheet>
-	<SpriteSheet path="resources/player.png">
+	<SpriteSheet path="player.png">
 		<Sprite id="playerR" x="0" y="0" w="32" h="32"/>
 		<Sprite id="playerL" x="0" y="0" w="32" h="32" xflip="true"/>
 		<Sprite id="playerU" x="32" y="0" w="32" h="32"/>
 		<Sprite id="playerD" x="64" y="0" w="32" h="32"/>
 		<Sprite id="playerBig" x="0" y="32" w="96" h="96"/>
 	</SpriteSheet>
-	<SpriteSheet path="resources/monster.png">
+	<SpriteSheet path="monster.png">
 		<Sprite id="ghostBig1" x="0" y="0" w="96" h="96"/>
 		<Sprite id="ghostBig2" x="96" y="0" w="96" h="96"/>
 		<Sprite id="ghostBig3" x="192" y="0" w="96" h="96"/>
 	</SpriteSheet>
-	<SpriteSheet path="resources/scratch.png">
+	<SpriteSheet path="flame.png">
+		<Sprite id="flame1" x="0" y="0" w="64" h="96"/>
+		<Sprite id="flame2" x="64" y="0" w="64" h="96"/>
+	</SpriteSheet>
+	<SpriteSheet path="scratch.png">
 		<Sprite id="scratch1" x="0" y="0" w="96" h="96"/>
 		<Sprite id="scratch2" x="96" y="0" w="96" h="96"/>
 	</SpriteSheet>
-	<SpriteSheet path="resources/background.png">
+	<SpriteSheet path="background.png">
 		<Sprite id="battleBackground" x="0" y="0" w="500" h="270"/>
 	</SpriteSheet>
 	<Animation id="tile_water" speed="300" pingPong="true">
@@ -50,7 +55,17 @@
 		<Frame id="tile_water_grass_l1" />
 		<Frame id="tile_water_grass_l2" />
 	</Animation>
-		<Animation id="ghostBig" speed="300" pingPong="false">
+	<Animation id="tile_water_grass_u" speed="300" pingPong="true">
+		<Frame id="tile_water_grass_u1" />
+		<Frame id="tile_water_grass_u2" />
+		<Frame id="tile_water_grass_u3" />
+	</Animation>
+	<Animation id="tile_water_grass_d" speed="300" pingPong="true">
+		<Frame id="tile_water_grass_d1" />
+		<Frame id="tile_water_grass_d2" />
+		<Frame id="tile_water_grass_d3" />
+	</Animation>
+	<Animation id="ghostBig" speed="300" pingPong="false">
 		<Frame id="ghostBig1" />
 		<Frame id="ghostBig2" />
 		<Frame id="ghostBig3" />
@@ -58,6 +73,9 @@
 	<Animation id="scratch" speed="300" pingPong="false">
 		<Frame id="scratch1" />
 		<Frame id="scratch2" />
-		<Frame id="scratch2" />
+	</Animation>
+	<Animation id="flame" speed="300" pingPong="false">
+		<Frame id="flame1" />
+		<Frame id="flame2" />
 	</Animation>
 </ResourcePack>

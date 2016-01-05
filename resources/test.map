@@ -1,5 +1,5 @@
 
-<Map width="40" height="20">
+<Map width="30" height="30">
 	<Tile alias="g" graphics="tile_grass" />
 	<Tile alias="w" graphics="tile_water" />
 	<Tile alias="c" graphics="tree_bot" />
@@ -9,70 +9,99 @@
 	<Tile alias="/" graphics="tile_water_grass_u" />
 	<Tile alias="¶" graphics="tile_water_grass_d" />
 	<Layer1>
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggwgggggggggggggggggggggggggggg
-		gggggggggwwwwwwggggggggggggggggggggggggg
-		ggggggggwwwwwwgggggggggggggggggggggggggg
-		ggggggggggwwwwgggggggggggggggggggggggggg
-		gggggggggggwgggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		gggggggggggggggggggggggggggggggggggggggg
-		
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		ggggggggggggggggggg////ggggggg
+		gggggggggggggggggggwwwwggggggg
+		ggggggggggggggggg€wwwwww%ggggg
+		ggggggggggggggggg€wwwwww%ggggg
+		gggggggggggggggggggwwwwggggggg
+		ggggggggggggggggggg¶¶¶¶ggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggg
 	</Layer1>
 	<Layer2>
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		-----c----------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
+		------------------------------
+		---------------------------c--
+		-----------------c------------
+		------c-----------------------
+		---------------------------c--
+		------------------------------
+		-----c------------------------
+		----------c-------------------
+		------------------------------
+		------------------------------
+		-----------c------------------
+		-----c---------------------c--
+		-------------------c----------
+		------------------------------
+		------------------------------
+		----------c----------c--------
+		------------------------------
+		------------------------------
+		------------------------------
+		--c---------------------------
+		------------------------------
+		-----------------c------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
 	</Layer2>
 	<Layer3>
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		-----t----------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
-		----------------------------------------
+		---------------------------t--
+		-----------------t------------
+		------t-----------------------
+		---------------------------t--
+		------------------------------
+		-----t------------------------
+		----------t-------------------
+		------------------------------
+		------------------------------
+		-----------t------------------
+		-----t---------------------t--
+		-------------------t----------
+		------------------------------
+		------------------------------
+		----------t----------t--------
+		------------------------------
+		------------------------------
+		------------------------------
+		--t---------------------------
+		------------------------------
+		-----------------t------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
+		------------------------------
 	</Layer3>
 </Map>

@@ -106,7 +106,7 @@ public abstract class Map {
 		}
 		
 		for(int y = (int) Math.max((camera.getPosition().getY() / 32 - 6), 0); 
-				y < (int) Math.min((camera.getPosition().getY() / 32 + 6), height); y++) {
+				y < (int) Math.min((camera.getPosition().getY() / 32 + 60), height); y++) {
 			for(int x = (int) Math.max((camera.getPosition().getX() / 32 - 10), 0); 
 					x < (int) Math.min((camera.getPosition().getX() / 32 + 10), width); x++) {
 				if(tiles[2][x+y*width] != null) {

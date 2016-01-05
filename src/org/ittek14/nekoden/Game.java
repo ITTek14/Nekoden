@@ -23,6 +23,7 @@ public class Game extends StateBasedGame {
 			appgc.setDisplayMode(800, 600, false);
 			Settings.width = appgc.getWidth();
 			Settings.height = appgc.getHeight();
+			appgc.setShowFPS(false);
 			appgc.start();
 		} catch (SlickException ex) {
 			Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);

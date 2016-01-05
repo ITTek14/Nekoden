@@ -19,12 +19,14 @@ import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Battle implements GameState {
+  private long wait = 0;
 	private GUI gui;
 	private BattleAnime battleAnime;
 	private BattleEnemy enemy;
 	private Stats playerStats;
 	private ProgressBar enemyHealthP, playerHealthP, playerMagicP;
 	private Sprite playerSprite;
+  private Sprite deadSprite;
 	private Sprite attackSprite;
 	private int turn = 0;
 	
@@ -165,6 +167,7 @@ public class Battle implements GameState {
 		gui = new GUI();
 		battleAnime = new BattleAnime();
 		playerSprite = new Sprite("playerBig");
+		deadSprite = new Sprite("dead");
 		attackSprite = new Sprite("scratch");
 		battleAnime.init(arg0, arg1);
 		attackSprite.setLoop(false);
@@ -188,18 +191,18 @@ public class Battle implements GameState {
 				if(turn == 0 && attackSprite.isFinished() && !playerStats.isDead()) {
 					attackSprite.play();
 					enemy.getStats().subtractHP(playerStats.getATK());
-					//System.out.println(this);
 					turn = 1 - turn;
 					attackSprite = new Sprite("scratch");
+					wait = 2000;
 				}
 			}
 		});
-		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Deff", new Vector2f(50, 30)){
+		/*gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Def", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
 				
 			}
-		});
+		});*/
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Bag", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
@@ -242,7 +245,12 @@ public class Battle implements GameState {
 		battleAnime.renderBackground(container, game, g);
 		
 		enemy.render(container, game, g);
-		playerSprite.draw(container.getWidth() / 2f - 350f, container.getHeight() / 2f - 160 - 48f);
+		if(playerStats.isDead())
+		{
+		  deadSprite.draw(container.getWidth() / 2f - 350f, container.getHeight() / 2f - 160 - 48f);
+		}else{
+		  playerSprite.draw(container.getWidth() / 2f - 350f, container.getHeight() / 2f - 160 - 48f);
+		}
 		
 		if(!attackSprite.isFinished()) {
 			if(turn == 1) {
@@ -264,10 +272,10 @@ public class Battle implements GameState {
 		gui.render(container, g);
 		
 		g.setColor(Color.black);
-		g.drawString("Enemy: ", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
+		g.drawString("Real Spooky Ghost", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - container.getDefaultFont().getWidth("Real Spooky Ghost") - 5, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
 		enemyHealthP.setPosition(container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 140f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
 		
-		g.drawString("Player: ", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
+		g.drawString("The Hero", container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 20f);
 		g.drawString("HP: " + playerStats.getHP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 40f);
 		g.drawString("MP: " + playerStats.getMP(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 60f);
 		g.drawString("ATK: " + playerStats.getATK(), container.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 70f, container.getHeight() - battleAnime.getRegionSize().y - 100f + 80f);
@@ -278,13 +286,14 @@ public class Battle implements GameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		// TODO Auto-generated method stubws
+	  // TODO Auto-generated method stubws
 		battleAnime.update(container, game, delta);
 		gui.update(container, delta);
 		enemy.update(container, game, delta);
 		
 		playerHealthP.setValue(playerStats.getHP());
 		playerMagicP.setValue(playerStats.getMP());
+		playerMagicP.setColor(Color.blue);
 		if(playerHealthP.getValue() < playerHealthP.getMaxValue() / 2) {
 			playerHealthP.setColor(Color.red);
 		} else if(playerHealthP.getValue() < playerHealthP.getMaxValue() / 1.5f) {
@@ -302,12 +311,25 @@ public class Battle implements GameState {
 			enemyHealthP.setColor(Color.green);
 		}
 		
-		if(turn == 1 && attackSprite.isFinished() && !enemy.getStats().isDead()) {
-			playerStats.subtractHP(enemy.getStats().getATK());
-			turn = 1 - turn;
-			attackSprite = new Sprite("flame");
-			attackSprite.play();
-		}
+		// CODE AFTER THIS IS NOT EXECUTED IF WAITING
+    if(wait > 0){
+      wait-=delta;
+      return;
+    }
+    
+
+    if(turn == 1 && attackSprite.isFinished() && !enemy.getStats().isDead()) {
+      playerStats.subtractHP(enemy.getStats().getATK());
+      turn = 1 - turn;
+      attackSprite = new Sprite("flame");
+      attackSprite.play();
+      wait = 2000;
+    }
+ 
+    if(enemy.isDead())
+    {
+      game.enterState(1);
+    }
 	}
 
 	public void setPlayerStats(Stats stats) {
