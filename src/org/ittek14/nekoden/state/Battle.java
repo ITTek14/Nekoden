@@ -1,5 +1,8 @@
 package org.ittek14.nekoden.state;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.battle.BattleAnime;
 import org.ittek14.nekoden.battle.BattleEnemy;
@@ -25,6 +28,8 @@ public class Battle implements GameState {
 	private Stats playerStats;
 	private ProgressBar enemyHealthP, playerHealthP, playerMagicP;
 	private Sprite playerSprite;
+	private Sprite attackSprite;
+	private int turn = 0;
 	
 	@Override
 	public void mouseClicked(int arg0, int arg1, int arg2, int arg3) {
@@ -163,7 +168,9 @@ public class Battle implements GameState {
 		gui = new GUI();
 		battleAnime = new BattleAnime();
 		playerSprite = new Sprite("playerBig");
+		attackSprite = new Sprite("scratch");
 		battleAnime.init(arg0, arg1);
+		attackSprite.setLoop(false);
 		
 		//TEST ONLY
 		enemy = new TestEnemy(new Vector2f(arg0.getWidth() / 2f, arg0.getHeight() / 2f - 160f - 48f));
@@ -178,13 +185,15 @@ public class Battle implements GameState {
 		gui.addWidget(playerHealthP);
 		gui.addWidget(playerMagicP);
 		
-
-		
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 30f), "Atk", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
-				enemy.getStats().subtractHP(playerStats.getATK());
-				System.out.println(this);
+				if(turn == 0 && attackSprite.isFinished() && !playerStats.isDead()) {
+					attackSprite.play();
+					enemy.getStats().subtractHP(playerStats.getATK());
+					//System.out.println(this);
+					turn = 1 - turn;
+				}
 			}
 		});
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Deff", new Vector2f(50, 30)){
@@ -202,7 +211,9 @@ public class Battle implements GameState {
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 35f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Run", new Vector2f(70, 30)){
 			@Override
 			public void onClick(int button) {
-				arg1.enterState(1);
+				if(turn == 0 && attackSprite.isFinished() && !playerStats.isDead()) {
+					arg1.enterState(1);
+				}
 			}
 		});
 		
@@ -234,6 +245,14 @@ public class Battle implements GameState {
 		
 		enemy.render(container, game, g);
 		playerSprite.draw(container.getWidth() / 2f - 350f, container.getHeight() / 2f - 160 - 48f);
+		
+		if(!attackSprite.isFinished()) {
+			if(turn == 1) {
+				attackSprite.draw(container.getWidth() / 2f, container.getHeight() / 2f - 160f - 48f);
+			} else if (turn == 0) {
+				attackSprite.draw(container.getWidth() / 2f - 350f, container.getHeight() / 2f - 160 - 48f);
+			}
+		}
 		
 		g.resetTransform();
 		g.setColor(Color.black);
@@ -283,6 +302,12 @@ public class Battle implements GameState {
 			enemyHealthP.setColor(Color.orange);
 		} else {
 			enemyHealthP.setColor(Color.green);
+		}
+		
+		if(turn == 1 && attackSprite.isFinished() && !enemy.getStats().isDead()) {
+			playerStats.subtractHP(enemy.getStats().getATK());
+			turn = 1 - turn;
+			attackSprite.play();
 		}
 	}
 

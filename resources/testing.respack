@@ -29,7 +29,11 @@
 		<Sprite id="ghostBig1" x="0" y="0" w="96" h="96"/>
 		<Sprite id="ghostBig2" x="96" y="0" w="96" h="96"/>
 		<Sprite id="ghostBig3" x="192" y="0" w="96" h="96"/>
-	</SpriteSheet>d
+	</SpriteSheet>
+	<SpriteSheet path="resources/scratch.png">
+		<Sprite id="scratch1" x="0" y="0" w="96" h="96"/>
+		<Sprite id="scratch2" x="96" y="0" w="96" h="96"/>
+	</SpriteSheet>
 	<SpriteSheet path="resources/background.png">
 		<Sprite id="battleBackground" x="0" y="0" w="500" h="270"/>
 	</SpriteSheet>
@@ -50,5 +54,10 @@
 		<Frame id="ghostBig1" />
 		<Frame id="ghostBig2" />
 		<Frame id="ghostBig3" />
+	</Animation>
+	<Animation id="scratch" speed="300" pingPong="false">
+		<Frame id="scratch1" />
+		<Frame id="scratch2" />
+		<Frame id="scratch2" />
 	</Animation>
 </ResourcePack>
