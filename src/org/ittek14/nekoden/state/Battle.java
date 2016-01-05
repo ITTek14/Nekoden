@@ -1,8 +1,5 @@
 package org.ittek14.nekoden.state;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.ittek14.nekoden.Settings;
 import org.ittek14.nekoden.battle.BattleAnime;
 import org.ittek14.nekoden.battle.BattleEnemy;
@@ -193,25 +190,26 @@ public class Battle implements GameState {
 					enemy.getStats().subtractHP(playerStats.getATK());
 					//System.out.println(this);
 					turn = 1 - turn;
+					attackSprite = new Sprite("scratch");
 				}
 			}
 		});
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 65f), "Deff", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
-				arg1.enterState(1);
+				
 			}
 		});
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 25f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Bag", new Vector2f(50, 30)){
 			@Override
 			public void onClick(int button) {
-				arg1.enterState(1);
+				
 			}
 		});
 		gui.addWidget(new Button(arg0, new Vector2f(arg0.getWidth() / 2f - battleAnime.getRegionSize().x / 2f + 700f - 35f, arg0.getHeight() - battleAnime.getRegionSize().y - 100f + 100f), "Run", new Vector2f(70, 30)){
 			@Override
 			public void onClick(int button) {
-				if(turn == 0 && attackSprite.isFinished() && !playerStats.isDead()) {
+				if((turn == 0 && attackSprite.isFinished() && !playerStats.isDead()) || enemy.isDead()) {
 					arg1.enterState(1);
 				}
 			}
@@ -307,6 +305,7 @@ public class Battle implements GameState {
 		if(turn == 1 && attackSprite.isFinished() && !enemy.getStats().isDead()) {
 			playerStats.subtractHP(enemy.getStats().getATK());
 			turn = 1 - turn;
+			attackSprite = new Sprite("flame");
 			attackSprite.play();
 		}
 	}
