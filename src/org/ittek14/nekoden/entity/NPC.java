@@ -9,7 +9,7 @@ public class NPC extends Entity{
 	
 	public NPC(String[] sprites){
 		this.sprites = sprites;
-		sprite = new Sprite(sprites[0], false);
+		sprite = new Sprite(sprites[0]);
 	}
 	
 	public void draw() {

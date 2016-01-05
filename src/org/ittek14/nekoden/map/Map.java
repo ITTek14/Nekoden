@@ -55,7 +55,7 @@ public abstract class Map {
 							for(int t = 0; t < alias.length; t++)
 							{
 								if(data.charAt(x+y*width) == alias[t]) {
-									tiles[l][x+y*width] = new Tile(new Sprite(ids[t], true));
+									tiles[l][x+y*width] = new Tile(new Sprite(ids[t]));
 								}
 							}
 						}

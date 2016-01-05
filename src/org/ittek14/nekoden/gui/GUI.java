@@ -31,7 +31,6 @@ public class GUI {
   public void clearWidgets(GameContainer container) {
 	  for(int i = 0; i < widgets.size(); i++) {
 		  widgets.get(i).unregister(container);
-		  widgets.get(i).disable();
 		  widgets.remove(i);
 	  }
   }
