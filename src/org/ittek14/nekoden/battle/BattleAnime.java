@@ -17,7 +17,7 @@ public class BattleAnime {
 	public BattleAnime() {}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		background = new Sprite("battleBackground");
+		background = new Sprite("battleBackground", true);
 		uiRegion = new Rectangle(container.getWidth() / 2f - regionWidth / 2f, container.getHeight() - regionHeight - 85f, regionWidth, regionHeight);
 	}
 	

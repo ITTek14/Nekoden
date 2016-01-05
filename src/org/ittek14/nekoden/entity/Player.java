@@ -19,7 +19,7 @@ public class Player extends Entity {
 	
 	public Player(Vector2f vector2f) {
 		super(vector2f);
-		sprite = new Sprite("playerD");
+		sprite = new Sprite("playerD", false);
 		x = 10; 
 		y = 10;
 		setPosition(new Vector2f(x*16, y*16));
@@ -33,19 +33,19 @@ public class Player extends Entity {
 		if(target.distance(position) < 1){
 			if(Keyboard.isKeyDown(Keyboard.KEY_W) && map.isEmpty(x*16, (y-1)*16, 1))  {
 				y--;
-				sprite = new Sprite("playerU");
+				sprite = new Sprite("playerU", false);
 				moving = true;
 			}else if(Keyboard.isKeyDown(Keyboard.KEY_S) && map.isEmpty(x*16, (y+1)*16, 1))  {
 				y++;
-				sprite = new Sprite("playerD");
+				sprite = new Sprite("playerD", false);
 				moving = true;
 			}else if(Keyboard.isKeyDown(Keyboard.KEY_A) && map.isEmpty((x-1)*16, y*16, 1))  {
 				x--;
-				sprite = new Sprite("playerL");
+				sprite = new Sprite("playerL", false);
 				moving = true;
 			}else if(Keyboard.isKeyDown(Keyboard.KEY_D) && map.isEmpty((x+1)*16, y*16, 1))  {
 				x++;
-				sprite = new Sprite("playerR");
+				sprite = new Sprite("playerR", false);
 				moving = true;
 			}
 		}

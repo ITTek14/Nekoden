@@ -12,7 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class TestEnemy extends BattleEnemy {
 
 	public TestEnemy(Vector2f position) {
-		super(position, "Test Enemy", new Stats(100, 100, 1), new Sprite("tile_grass"), new Sprite("ghostBig"));
+		super(position, "Test Enemy", new Stats(100, 100, 1), new Sprite("tile_grass", true), new Sprite("ghostBig", true));
 		// TODO Auto-generated constructor stub
 	}
 
@@ -25,7 +25,6 @@ public class TestEnemy extends BattleEnemy {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

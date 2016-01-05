@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 public abstract class Widget implements InputListener {
   protected Vector2f position;
+  protected boolean enabled = true;
   
   public Widget(GameContainer gc){
     gc.getInput().addListener(this);
@@ -22,6 +23,11 @@ public abstract class Widget implements InputListener {
   public abstract void update(GameContainer gc, int delta);
   public abstract void render(GameContainer gc, Graphics g);
 
+  public void disable(){
+	  enabled = false;
+	  this.setInput(null);
+  }
+  
   @Override
   public void mouseClicked(int button, int x, int y, int clickCount) {}
 
@@ -48,7 +54,7 @@ public abstract class Widget implements InputListener {
 
   @Override
   public boolean isAcceptingInput() {
-    return true;
+    return enabled;
   }
 
   @Override
