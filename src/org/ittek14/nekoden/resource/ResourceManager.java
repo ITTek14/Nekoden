@@ -71,7 +71,7 @@ public class ResourceManager {
 			XMLElementList audElements = origin.getChildrenByName("Audio");
 			for(int i = 0; i < audElements.size(); i++) {
 				AudioResource audRes = new AudioResource(audElements.get(i).getAttribute("id"));
-				audRes.loadResource(audElements.get(i).getAttribute("path"));
+				audRes.loadResource(audElements.get(i).getAttribute("path")); 
 				audioResources.add(audRes);
 			}
 		} catch (SlickException e) {
